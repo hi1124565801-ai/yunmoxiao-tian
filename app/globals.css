@@ -767,6 +767,200 @@ main {
   margin-bottom: 2.4rem;
 }
 
+.experience-map-layout {
+  display: grid;
+  grid-template-columns: minmax(520px, 1.08fr) minmax(420px, 0.92fr);
+  gap: clamp(2.5rem, 5vw, 5.5rem);
+  align-items: start;
+}
+
+.academic-map {
+  position: sticky;
+  top: 105px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.academic-map svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.academic-map__legend {
+  position: absolute;
+  z-index: 2;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.academic-map__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.5rem;
+  border: 1px solid var(--line);
+  background: rgba(251, 250, 245, 0.9);
+  color: var(--pine);
+  font-size: 0.62rem;
+  font-weight: 800;
+}
+
+.academic-map__legend i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--clay);
+}
+
+.academic-map__legend .category-study {
+  background: var(--ochre);
+}
+
+.academic-map__legend .category-exchange {
+  background: var(--moss);
+}
+
+.academic-map__loading {
+  display: grid;
+  aspect-ratio: 800 / 420;
+  place-items: center;
+  color: var(--moss);
+  font-family: var(--serif);
+}
+
+.academic-map > p {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.academic-map-marker {
+  cursor: pointer;
+  outline: none;
+}
+
+.academic-map-marker__ring {
+  fill: rgba(182, 107, 83, 0.12);
+  stroke: var(--clay);
+  stroke-width: 1.5px;
+  transition: r 180ms ease, fill 180ms ease;
+}
+
+.academic-map-marker__dot {
+  fill: var(--clay);
+  stroke: var(--warm-white);
+  stroke-width: 1.5px;
+  transition: r 180ms ease;
+}
+
+.academic-map-marker.category-study .academic-map-marker__ring {
+  fill: rgba(205, 166, 92, 0.12);
+  stroke: var(--ochre);
+}
+
+.academic-map-marker.category-study .academic-map-marker__dot {
+  fill: var(--ochre);
+}
+
+.academic-map-marker.category-exchange .academic-map-marker__ring {
+  fill: rgba(113, 133, 108, 0.12);
+  stroke: var(--moss);
+}
+
+.academic-map-marker.category-exchange .academic-map-marker__dot {
+  fill: var(--moss);
+}
+
+.academic-map-marker text {
+  fill: var(--pine);
+  font-family: var(--serif);
+  font-size: 8px;
+  font-weight: 700;
+  paint-order: stroke;
+  stroke: var(--warm-white);
+  stroke-width: 2px;
+}
+
+.academic-map-marker:hover .academic-map-marker__ring,
+.academic-map-marker:focus-visible .academic-map-marker__ring,
+.academic-map-marker.is-active .academic-map-marker__ring {
+  fill: rgba(182, 107, 83, 0.28);
+}
+
+.experience-map-list {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.experience-map-list li {
+  border-bottom: 1px solid var(--line);
+}
+
+.experience-map-list button {
+  display: grid;
+  width: 100%;
+  min-height: 88px;
+  grid-template-columns: 34px minmax(0, 1fr) 116px;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 0;
+  border-left: 3px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+.experience-map-list li.is-active button,
+.experience-map-list button:hover {
+  border-left-color: var(--clay);
+  background: var(--mist);
+}
+
+.experience-map-list__copy,
+.experience-map-list__meta {
+  display: grid;
+}
+
+.experience-map-list__copy {
+  gap: 0.3rem;
+}
+
+.experience-map-list__copy strong {
+  color: var(--pine);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.experience-map-list__copy small {
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
+.experience-map-list__meta {
+  gap: 0.2rem;
+  color: var(--moss);
+  font-size: 0.65rem;
+  text-align: right;
+}
+
+.experience-map-list__meta time {
+  color: var(--pine);
+  font-weight: 800;
+}
+
 .experience-timeline {
   border-top: 1px solid var(--line);
 }
@@ -2267,6 +2461,11 @@ main {
     font-size: clamp(4rem, 7vw, 6.2rem);
   }
 
+  .experience-map-layout {
+    grid-template-columns: minmax(440px, 1fr) minmax(380px, 0.9fr);
+    gap: 2.5rem;
+  }
+
   .experience-timeline article {
     grid-template-columns: 44px minmax(210px, 0.7fr) minmax(300px, 1.3fr);
   }
@@ -2396,6 +2595,15 @@ main {
 
   .portfolio-directory__intro {
     max-width: 620px;
+  }
+
+  .experience-map-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .academic-map {
+    position: relative;
+    top: auto;
   }
 
   .writing-preview,
@@ -2581,6 +2789,24 @@ main {
 
   .international-experience--compact .experience-date {
     grid-column: 2;
+  }
+
+  .experience-map-list button {
+    grid-template-columns: 30px minmax(0, 1fr);
+    min-height: 96px;
+  }
+
+  .experience-map-list__meta {
+    grid-column: 2;
+    grid-auto-flow: column;
+    justify-content: start;
+    gap: 0.5rem;
+    text-align: left;
+  }
+
+  .academic-map__legend {
+    position: static;
+    padding: 0.8rem 0.8rem 0;
   }
 
   .honors li {

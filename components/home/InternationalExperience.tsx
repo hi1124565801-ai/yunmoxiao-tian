@@ -1,4 +1,5 @@
 import { internationalExperiences } from "@/data/internationalExperiences";
+import { InternationalExperienceMap } from "./InternationalExperienceMap";
 
 export function InternationalExperience() {
   return (
@@ -13,21 +14,7 @@ export function InternationalExperience() {
         </div>
         <p>A concise record; project details remain on the Research page.</p>
       </div>
-      <div className="experience-timeline">
-        {internationalExperiences.map((experience, index) => (
-          <article key={experience.institution}>
-            <span className="entry-number">{String(index + 1).padStart(2, "0")}</span>
-            <div className="experience-place">
-              <h3>{experience.institution}</h3>
-              <p>{experience.role}</p>
-            </div>
-            <div className="experience-date">
-              <span>{experience.location}</span>
-              <strong>{experience.dates}</strong>
-            </div>
-          </article>
-        ))}
-      </div>
+      <InternationalExperienceMap experiences={internationalExperiences} />
     </section>
   );
 }

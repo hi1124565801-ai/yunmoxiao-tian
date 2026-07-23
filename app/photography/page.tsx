@@ -39,10 +39,10 @@ export default function PhotographyPage() {
       <section className="unlocated-albums section-pad" aria-labelledby="unlocated-heading">
         <div>
           <p className="section-kicker">More photographs</p>
-          <h2 id="unlocated-heading">Country albums beyond the map</h2>
+          <h2 id="unlocated-heading">Country albums with broader labels</h2>
           <p>
-            These photographs are available to browse now. City labels will be added
-            when confirmed.
+            These albums are pinned at country level on the map. City labels will be
+            added when confirmed.
           </p>
         </div>
         <UnlocatedAlbums albums={unlocatedPhotographyAlbums} />

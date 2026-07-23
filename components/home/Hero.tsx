@@ -18,14 +18,21 @@ export function Hero() {
           <p>Expected Graduation: June 2027</p>
         </div>
         <p className="hero-position">
-          My research examines how organizations and digital platforms shape
-          cultural production, consumption, and social interaction, with particular
-          attention to urban life and everyday experience.
+          My research sits at the intersection of cultural sociology,
+          communication, and media and technology. I study how social,
+          organizational, and technological systems shape the ways people
+          encounter, participate in, and make sense of culture. My current projects
+          examine how a multi-city bar organization structures and reproduces
+          participant-produced sociability; how brands maintain visual and message
+          consistency across digital platforms; and how AI-supported writing systems
+          reorganize journalistic knowledge production.
         </p>
         <p className="hero-intro">
           At Peking University, I combine training in English literature and
-          sociology with qualitative and mixed-method research. Beyond the academy,
-          I work through long-form journalism, photography, and digital mapping.
+          sociology with qualitative fieldwork, interviews, textual and visual
+          analysis, and mixed-method research. Alongside academic research, I write
+          long-form journalism, practice photography, and independently develop
+          digital cultural projects, including the Literary City Atlas.
         </p>
         <div className="hero-interests" aria-label="Research interests">
           {researchInterests.slice(0, 5).map((interest) => (

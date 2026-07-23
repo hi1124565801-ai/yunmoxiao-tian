@@ -3,6 +3,7 @@ export type PhotographyLocation = {
   city: string;
   country: string;
   coordinates: [number, number] | null;
+  mapCoordinates?: [number, number];
   description?: string;
   photos: {
     src: string;
@@ -297,6 +298,7 @@ export const photographyLocations: PhotographyLocation[] = [
     city: "City to be confirmed",
     country: "Türkiye",
     coordinates: null,
+    mapCoordinates: [35.2433, 38.9637],
     photos: album("turkey", [
       "People walking beside water in a misty Turkish city",
       "Seagulls flying above blue water with a Turkish city skyline beyond",
@@ -307,6 +309,7 @@ export const photographyLocations: PhotographyLocation[] = [
     city: "City to be confirmed",
     country: "Egypt",
     coordinates: null,
+    mapCoordinates: [30.8025, 26.8206],
     photos: album("egypt", [
       "Sunlight filtering through clear blue water in Egypt",
       "A low sun over a desert landscape in Egypt",
@@ -318,6 +321,7 @@ export const photographyLocations: PhotographyLocation[] = [
     city: "City to be confirmed",
     country: "Sri Lanka",
     coordinates: null,
+    mapCoordinates: [80.7718, 7.8731],
     photos: album("sri-lanka", [
       "A silhouetted person standing on rocks beside the sea in Sri Lanka",
       "People gathered around a speaker on a rooftop in Sri Lanka",
@@ -326,8 +330,14 @@ export const photographyLocations: PhotographyLocation[] = [
   },
 ];
 
+export function getPhotographyLocationCoordinates(
+  location: PhotographyLocation,
+): [number, number] | null {
+  return location.coordinates ?? location.mapCoordinates ?? null;
+}
+
 export const mappedPhotographyLocations = photographyLocations.filter(
-  (location) => location.coordinates !== null,
+  (location) => getPhotographyLocationCoordinates(location) !== null,
 );
 
 export const unlocatedPhotographyAlbums = photographyLocations.filter(

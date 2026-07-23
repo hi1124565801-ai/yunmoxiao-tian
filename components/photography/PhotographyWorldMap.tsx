@@ -8,8 +8,17 @@ import {
   ZoomableGroup,
 } from "react-simple-maps";
 import geography from "world-atlas/countries-110m.json";
-import { useCallback, useRef, useState, useSyncExternalStore } from "react";
-import { mappedPhotographyLocations } from "@/data/photographyLocations";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
+import {
+  getPhotographyLocationCoordinates,
+  mappedPhotographyLocations,
+} from "@/data/photographyLocations";
 import { LocationDrawer } from "./LocationDrawer";
 
 const subscribeToHydration = () => () => {};
@@ -28,12 +37,73 @@ export function PhotographyWorldMap() {
   });
   const [touchMoveEnabled, setTouchMoveEnabled] = useState(false);
   const lastMarker = useRef<SVGGElement | null>(null);
+  const animationFrame = useRef<number | null>(null);
+  const positionRef = useRef(position);
   const selected = mappedPhotographyLocations.find((item) => item.id === selectedId);
 
-  const openLocation = useCallback((id: string, element: SVGGElement) => {
-    lastMarker.current = element;
-    setSelectedId(id);
-  }, []);
+  useEffect(() => {
+    positionRef.current = position;
+  }, [position]);
+
+  useEffect(
+    () => () => {
+      if (animationFrame.current != null) {
+        window.cancelAnimationFrame(animationFrame.current);
+      }
+    },
+    [],
+  );
+
+  const animateView = useCallback(
+    (target: { coordinates: [number, number]; zoom: number }) => {
+      if (animationFrame.current != null) {
+        window.cancelAnimationFrame(animationFrame.current);
+      }
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        setPosition(target);
+        return;
+      }
+
+      const start = positionRef.current;
+      const startedAt = performance.now();
+      const duration = 320;
+      const step = (now: number) => {
+        const progress = Math.min(1, (now - startedAt) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const next = {
+          coordinates: [
+            start.coordinates[0] +
+              (target.coordinates[0] - start.coordinates[0]) * eased,
+            start.coordinates[1] +
+              (target.coordinates[1] - start.coordinates[1]) * eased,
+          ] as [number, number],
+          zoom: start.zoom + (target.zoom - start.zoom) * eased,
+        };
+        positionRef.current = next;
+        setPosition(next);
+        if (progress < 1) {
+          animationFrame.current = window.requestAnimationFrame(step);
+        } else {
+          animationFrame.current = null;
+        }
+      };
+      animationFrame.current = window.requestAnimationFrame(step);
+    },
+    [],
+  );
+
+  const openLocation = useCallback(
+    (id: string, element: SVGGElement, coordinates: [number, number]) => {
+      lastMarker.current = element;
+      setSelectedId(id);
+      animateView({
+        coordinates,
+        zoom: Math.max(1.35, Math.min(1.7, positionRef.current.zoom)),
+      });
+    },
+    [animateView],
+  );
 
   const closeLocation = useCallback(() => {
     setSelectedId(null);
@@ -75,7 +145,10 @@ export function PhotographyWorldMap() {
             type="button"
             aria-label="Zoom map out"
             onClick={() =>
-              setPosition((current) => ({ ...current, zoom: Math.max(1, current.zoom - 0.45) }))
+              animateView({
+                ...positionRef.current,
+                zoom: Math.max(1, positionRef.current.zoom - 0.35),
+              })
             }
           >
             −
@@ -84,12 +157,18 @@ export function PhotographyWorldMap() {
             type="button"
             aria-label="Zoom map in"
             onClick={() =>
-              setPosition((current) => ({ ...current, zoom: Math.min(3.5, current.zoom + 0.45) }))
+              animateView({
+                ...positionRef.current,
+                zoom: Math.min(3.5, positionRef.current.zoom + 0.35),
+              })
             }
           >
             +
           </button>
-          <button type="button" onClick={() => setPosition({ coordinates: [10, 24], zoom: 1 })}>
+          <button
+            type="button"
+            onClick={() => animateView({ coordinates: [10, 24], zoom: 1 })}
+          >
             Reset View
           </button>
         </div>
@@ -109,7 +188,14 @@ export function PhotographyWorldMap() {
             minZoom={1}
             maxZoom={3.5}
             onMoveEnd={({ coordinates, zoom }) =>
-              setPosition({ coordinates: coordinates as [number, number], zoom })
+              {
+                const next = {
+                  coordinates: coordinates as [number, number],
+                  zoom,
+                };
+                positionRef.current = next;
+                setPosition(next);
+              }
             }
             filterZoomEvent={
               ((event: Event) => {
@@ -140,27 +226,32 @@ export function PhotographyWorldMap() {
               }
             </Geographies>
             {mappedPhotographyLocations.map((location, index) => {
+              const coordinates = getPhotographyLocationCoordinates(location);
+              if (!coordinates) return null;
               const active = selectedId === location.id;
               const hovered = hoveredId === location.id;
               const color = index % 3 === 0 ? "#B66B53" : "#CDA65C";
+              const placeLabel = location.coordinates ? location.city : location.country;
               return (
-                <Marker key={location.id} coordinates={location.coordinates!}>
+                <Marker key={location.id} coordinates={coordinates}>
                   <g
                     className={`map-marker ${active ? "is-active" : ""}`}
                     role="button"
                     tabIndex={0}
-                    aria-label={`${location.city}, ${location.country}. ${location.photos.length} ${
+                    aria-label={`${placeLabel}. ${location.photos.length} ${
                       location.photos.length === 1 ? "photograph" : "photographs"
                     }.`}
                     onMouseEnter={() => setHoveredId(location.id)}
                     onMouseLeave={() => setHoveredId(null)}
                     onFocus={() => setHoveredId(location.id)}
                     onBlur={() => setHoveredId(null)}
-                    onClick={(event) => openLocation(location.id, event.currentTarget)}
+                    onClick={(event) =>
+                      openLocation(location.id, event.currentTarget, coordinates)
+                    }
                     onKeyDown={(event) => {
                       if (event.key === "Enter" || event.key === " ") {
                         event.preventDefault();
-                        openLocation(location.id, event.currentTarget);
+                        openLocation(location.id, event.currentTarget, coordinates);
                       }
                     }}
                   >
@@ -196,8 +287,11 @@ export function PhotographyWorldMap() {
                           transformOrigin: "center bottom",
                         }}
                       >
-                        <strong>{location.city}</strong>
-                        <span>{location.country} · {location.photos.length} photos</span>
+                        <strong>{placeLabel}</strong>
+                        <span>
+                          {location.coordinates ? location.country : "Country-level album"} ·{" "}
+                          {location.photos.length} photos
+                        </span>
                       </div>
                     </foreignObject>
                   )}
