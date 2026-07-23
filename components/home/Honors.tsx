@@ -2,7 +2,7 @@ import { honors } from "@/data/honors";
 
 export function Honors() {
   return (
-    <section className="honors section-pad" aria-labelledby="honors-heading">
+    <section className="honors honors--compact section-pad" aria-labelledby="honors-heading">
       <div>
         <p className="section-kicker">Honors</p>
         <h2 id="honors-heading">Selected recognition at Peking University</h2>

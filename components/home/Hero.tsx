@@ -18,20 +18,17 @@ export function Hero() {
           <p>Expected Graduation: June 2027</p>
         </div>
         <p className="hero-position">
-          I study how culture, organizations, media, and everyday social life are
-          produced and experienced.
+          My research examines how organizations and digital platforms shape
+          cultural production, consumption, and social interaction, with particular
+          attention to urban life and everyday experience.
         </p>
         <p className="hero-intro">
-          Hello, I’m Yunmoxiao Tian (田云墨筱), an undergraduate at Peking
-          University graduating in 2027. I major in English Language and Literature
-          and pursue a second major in Sociology. My research interests lie at the
-          intersection of cultural sociology, consumer sociology, communication,
-          organizations, urban life, and digital platforms. Alongside academic
-          research, I work across long-form journalism, photography, and independent
-          digital projects.
+          At Peking University, I combine training in English literature and
+          sociology with qualitative and mixed-method research. Beyond the academy,
+          I work through long-form journalism, photography, and digital mapping.
         </p>
         <div className="hero-interests" aria-label="Research interests">
-          {researchInterests.slice(0, 6).map((interest) => (
+          {researchInterests.slice(0, 5).map((interest) => (
             <span key={interest}>{interest}</span>
           ))}
         </div>

@@ -2,13 +2,16 @@ import { internationalExperiences } from "@/data/internationalExperiences";
 
 export function InternationalExperience() {
   return (
-    <section className="international-experience section-pad" aria-labelledby="international-heading">
+    <section
+      className="international-experience international-experience--compact section-pad"
+      aria-labelledby="international-heading"
+    >
       <div className="section-head">
         <div>
           <p className="section-kicker">International Academic Experience</p>
-          <h2 id="international-heading">Research and study across institutions</h2>
+          <h2 id="international-heading">Selected research and study contexts</h2>
         </div>
-        <p>Five academic contexts across Europe, North America, and Asia.</p>
+        <p>A concise record; project details remain on the Research page.</p>
       </div>
       <div className="experience-timeline">
         {internationalExperiences.map((experience, index) => (
@@ -18,7 +21,6 @@ export function InternationalExperience() {
               <h3>{experience.institution}</h3>
               <p>{experience.role}</p>
             </div>
-            <p>{experience.description}</p>
             <div className="experience-date">
               <span>{experience.location}</span>
               <strong>{experience.dates}</strong>

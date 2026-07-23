@@ -295,7 +295,7 @@ export const photographyLocations: PhotographyLocation[] = [
   {
     id: "turkey",
     city: "City to be confirmed",
-    country: "Turkey",
+    country: "Türkiye",
     coordinates: null,
     photos: album("turkey", [
       "People walking beside water in a misty Turkish city",

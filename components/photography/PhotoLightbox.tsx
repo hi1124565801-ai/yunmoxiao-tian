@@ -13,6 +13,7 @@ export function PhotoLightbox({
   initialIndex: number;
   onClose: () => void;
 }) {
+  const placeLabel = location.coordinates ? location.city : location.country;
   const [index, setIndex] = useState(initialIndex);
   const closeRef = useRef<HTMLButtonElement>(null);
   const touchStart = useRef<number | null>(null);
@@ -59,7 +60,7 @@ export function PhotoLightbox({
       className="lightbox"
       role="dialog"
       aria-modal="true"
-      aria-label={`Photo ${index + 1} of ${photos.length} from ${location.city}`}
+      aria-label={`Photo ${index + 1} of ${photos.length} from ${placeLabel}`}
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
@@ -110,9 +111,10 @@ export function PhotoLightbox({
         →
       </button>
       <div className="lightbox-caption">
-        <p>{photo.caption ?? location.city}</p>
+        <p>{photo.caption ?? placeLabel}</p>
         <span>
-          {location.city}, {location.country} · {index + 1}/{photos.length}
+          {location.coordinates ? `${location.city}, ${location.country}` : location.country} ·{" "}
+          {index + 1}/{photos.length}
         </span>
       </div>
     </div>

@@ -20,7 +20,13 @@ export function SelectedFrames() {
   return (
     <div className="selected-frames" aria-label="Selected photography">
       {selected.map(({ location, photo, theme }, index) => (
-        <figure key={`${location.id}-${photo.src}`} className={`frame frame--${index + 1}`}>
+        <figure
+          key={`${location.id}-${photo.src}`}
+          className={`frame frame--${index + 1}`}
+          aria-label={`${theme}, ${
+            location.coordinates ? `${location.city}, ${location.country}` : location.country
+          }`}
+        >
           <div className="frame-image">
             <SmartImage
               src={photo.src}
@@ -31,7 +37,11 @@ export function SelectedFrames() {
           </div>
           <figcaption>
             <span>{theme}</span>
-            <p>{location.city}, {location.country}</p>
+            <p>
+              {location.coordinates
+                ? `${location.city}, ${location.country}`
+                : location.country}
+            </p>
           </figcaption>
         </figure>
       ))}

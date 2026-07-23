@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
-import { PhotographyWorldMap } from "@/components/photography/PhotographyWorldMap";
+import { PhotographyWorldMapClient } from "@/components/photography/PhotographyWorldMapClient";
 import { SelectedFrames } from "@/components/photography/SelectedFrames";
+import { UnlocatedAlbums } from "@/components/photography/UnlocatedAlbums";
 import { photographyLocations, unlocatedPhotographyAlbums } from "@/data/photographyLocations";
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default function PhotographyPage() {
         </p>
       </header>
       <section className="photography-page section-pad">
-        <PhotographyWorldMap />
+        <PhotographyWorldMapClient />
       </section>
       <section className="selected-frames-section section-pad" aria-labelledby="selected-frames-heading">
         <div className="section-head">
@@ -37,17 +38,14 @@ export default function PhotographyPage() {
       </section>
       <section className="unlocated-albums section-pad" aria-labelledby="unlocated-heading">
         <div>
-          <p className="section-kicker">Albums awaiting city confirmation</p>
-          <h2 id="unlocated-heading">Country-level labels retained as provided</h2>
+          <p className="section-kicker">More photographs</p>
+          <h2 id="unlocated-heading">Country albums beyond the map</h2>
+          <p>
+            These photographs are available to browse now. City labels will be added
+            when confirmed.
+          </p>
         </div>
-        <div>
-          {unlocatedPhotographyAlbums.map((album) => (
-            <article key={album.id}>
-              <h3>{album.country}</h3>
-              <p>{album.photos.length} photographs · city to be confirmed</p>
-            </article>
-          ))}
-        </div>
+        <UnlocatedAlbums albums={unlocatedPhotographyAlbums} />
       </section>
     </PageShell>
   );

@@ -12,6 +12,7 @@ export function LocationDrawer({
   location: PhotographyLocation;
   onClose: () => void;
 }) {
+  const placeLabel = location.coordinates ? location.city : location.country;
   const closeRef = useRef<HTMLButtonElement>(null);
   const lastPhotoTrigger = useRef<HTMLButtonElement | null>(null);
   const lightboxOpen = useRef(false);
@@ -70,27 +71,28 @@ export function LocationDrawer({
             type="button"
             className="icon-button drawer-close"
             onClick={onClose}
-            aria-label={`Close ${location.city} photographs`}
+            aria-label={`Close ${placeLabel} photographs`}
           >
             Close <span aria-hidden="true">×</span>
           </button>
           <div className="drawer-cover">
             <SmartImage
               src={location.photos[0]?.src ?? ""}
-              alt={location.photos[0]?.alt ?? `${location.city}, ${location.country}`}
+              alt={location.photos[0]?.alt ?? `Photograph from ${placeLabel}`}
               fill
               sizes="(max-width: 760px) 100vw, 44vw"
             />
           </div>
           <div className="drawer-content">
             <p className="section-kicker">{location.country}</p>
-            <h2 id="location-title">{location.city}</h2>
+            <h2 id="location-title">{placeLabel}</h2>
+            {!location.coordinates && <p className="drawer-location-note">City to be confirmed</p>}
             {location.description && <p className="drawer-description">{location.description}</p>}
             <p className="drawer-count">
               {location.photos.length} selected{" "}
               {location.photos.length === 1 ? "photograph" : "photographs"}
             </p>
-            <div className="drawer-gallery" aria-label={`Photos from ${location.city}`}>
+            <div className="drawer-gallery" aria-label={`Photos from ${placeLabel}`}>
               {location.photos.map((photo, index) => (
                 <button
                   key={photo.src}
@@ -109,7 +111,7 @@ export function LocationDrawer({
                       sizes="(max-width: 760px) 44vw, 20vw"
                     />
                   </span>
-                  <small>{photo.caption ?? `${location.city} · ${index + 1}`}</small>
+                  <small>{photo.caption ?? `${placeLabel} · ${index + 1}`}</small>
                 </button>
               ))}
             </div>
