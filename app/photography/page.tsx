@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
 import { PhotographyWorldMapClient } from "@/components/photography/PhotographyWorldMapClient";
 import { SelectedFrames } from "@/components/photography/SelectedFrames";
-import { UnlocatedAlbums } from "@/components/photography/UnlocatedAlbums";
-import { photographyLocations, unlocatedPhotographyAlbums } from "@/data/photographyLocations";
+import { photographyLocations } from "@/data/photographyLocations";
 
 export const metadata: Metadata = {
   title: "Photography",
@@ -35,17 +34,6 @@ export default function PhotographyPage() {
           <p>Images retain their original proportions and open in a keyboard-accessible viewer.</p>
         </div>
         <SelectedFrames />
-      </section>
-      <section className="unlocated-albums section-pad" aria-labelledby="unlocated-heading">
-        <div>
-          <p className="section-kicker">More photographs</p>
-          <h2 id="unlocated-heading">Country albums with broader labels</h2>
-          <p>
-            These albums are pinned at country level on the map. City labels will be
-            added when confirmed.
-          </p>
-        </div>
-        <UnlocatedAlbums albums={unlocatedPhotographyAlbums} />
       </section>
     </PageShell>
   );

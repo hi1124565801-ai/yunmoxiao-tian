@@ -1,0 +1,6 @@
+const siteBasePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "";
+
+export function withBasePath(path: string) {
+  if (!path.startsWith("/") || path.startsWith("//")) return path;
+  return `${siteBasePath}${path}`;
+}

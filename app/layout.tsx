@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { withBasePath } from "@/lib/sitePath";
 import "./globals.css";
 
 const publicSiteUrl =
@@ -15,8 +16,8 @@ export const metadata: Metadata = {
   description:
     "Yunmoxiao Tian is a Peking University undergraduate studying English Language and Literature and Sociology, with research interests in cultural sociology, consumer sociology, communication, organizations, urban life, and digital platforms.",
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
+    icon: withBasePath("/favicon.png"),
+    shortcut: withBasePath("/favicon.png"),
   },
   openGraph: {
     title: "Yunmoxiao Tian | Research, Writing & Photography",
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og.png",
+        url: withBasePath("/og.png"),
         width: 1536,
         height: 1024,
         alt: "Yunmoxiao Tian — academic portfolio",
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     title: "Yunmoxiao Tian | Research, Writing & Photography",
     description:
       "Academic research, long-form journalism, photography, and independent literary mapping.",
-    images: ["/og.png"],
+    images: [withBasePath("/og.png")],
   },
 };
 

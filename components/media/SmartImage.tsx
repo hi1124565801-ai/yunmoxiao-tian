@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { withBasePath } from "@/lib/sitePath";
 
 type SmartImageProps = {
   src: string;
@@ -37,7 +38,7 @@ export function SmartImage({
 
   return (
     <Image
-      src={src}
+      src={withBasePath(src)}
       alt={alt}
       unoptimized
       fill={fill}
