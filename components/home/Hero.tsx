@@ -17,6 +17,12 @@ export function Hero() {
           <p>Second Major in Sociology</p>
           <p>Expected Graduation: June 2027</p>
         </div>
+        <p className="hero-identity-summary">
+          Yunmoxiao Tian (<span lang="zh-CN">田云墨筱</span>, also written as Tian
+          Yunmoxiao) is an undergraduate at Peking University, majoring in English
+          Language and Literature with a second major in Sociology and graduating
+          in 2027.
+        </p>
         <p className="hero-position">
           My research sits at the intersection of{" "}
           <strong>cultural sociology, communication, and media and technology</strong>.
@@ -41,7 +47,7 @@ export function Hero() {
         </div>
         <div className="hero-actions">
           <a className="button button--solid" href={siteConfig.cvUrl} download>
-            Download CV
+            Download Yunmoxiao Tian’s CV
           </a>
           <Link className="button button--line" href="/research">View Research</Link>
           <a className="button button--text" href={`mailto:${siteConfig.academicEmail}`}>
@@ -56,7 +62,7 @@ export function Hero() {
         <div className="hero-portrait">
           <SmartImage
             src="/images/profile/yunmoxiao-main.jpg"
-            alt="Yunmoxiao Tian standing on a bridge in evening light"
+            alt="Portrait of Yunmoxiao Tian, a Peking University undergraduate in English Literature and Sociology"
             fill
             priority
             sizes="(max-width: 860px) 92vw, 42vw"

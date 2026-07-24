@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
 import { SmartImage } from "@/components/media/SmartImage";
+import { createPageMetadata, indexedPages } from "@/config/seo";
 import { literaryMapping } from "@/data/literaryMapping";
 
-export const metadata: Metadata = {
-  title: "Literary Mapping",
-  description:
-    "Literary City Atlas is an independently conceived, designed, and developed early-stage public prototype by Yunmoxiao Tian.",
-};
+const seo = indexedPages[5];
+export const metadata: Metadata = createPageMetadata(seo);
 
 export default function LiteraryMappingPage() {
   return (

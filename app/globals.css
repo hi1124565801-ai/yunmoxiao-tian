@@ -425,6 +425,14 @@ main {
   border-bottom: 1px solid var(--line);
 }
 
+.hero-identity-summary {
+  max-width: 680px;
+  margin-bottom: 1rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
 .hero-position {
   max-width: 660px;
   margin-bottom: 1rem;

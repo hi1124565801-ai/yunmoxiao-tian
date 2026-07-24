@@ -33,11 +33,41 @@ test("server-renders the academic homepage", async () => {
   assert.match(html, /Peking University/);
   assert.match(html, /Second Major in Sociology/);
   assert.match(html, /Expected Graduation: June 2027/);
+  assert.match(html, /also written as Tian/);
+  assert.match(html, /application\/ld\+json/);
+  assert.match(html, /ProfilePage/);
+  assert.match(html, /https:\/\/hi1124565801-ai\.github\.io\/yunmoxiao-tian\//);
+  assert.match(html, /rel="canonical"/);
+  assert.match(html, /name="robots"/);
   assert.match(html, /href="\/research"/);
   assert.match(html, /href="\/media"/);
   assert.match(html, /href="\/literary-mapping"/);
   assert.match(html, /href="\/files\/Yunmoxiao-Tian-CV.pdf"/);
   assert.doesNotMatch(html, /EN \/ 中文/);
+});
+
+test("serves the sitemap, robots helper, and noindex 404", async () => {
+  const sitemap = await render("/sitemap.xml");
+  assert.equal(sitemap.status, 200);
+  const sitemapXml = await sitemap.text();
+  assert.match(
+    sitemapXml,
+    /https:\/\/hi1124565801-ai\.github\.io\/yunmoxiao-tian\/research\//,
+  );
+  assert.doesNotMatch(sitemapXml, /localhost|chatgpt\.site|about|projects/);
+
+  const robots = await render("/robots.txt");
+  assert.equal(robots.status, 200);
+  assert.match(
+    await robots.text(),
+    /Sitemap: https:\/\/hi1124565801-ai\.github\.io\/yunmoxiao-tian\/sitemap\.xml/,
+  );
+
+  const missing = await render("/this-page-does-not-exist");
+  assert.equal(missing.status, 404);
+  const missingHtml = await missing.text();
+  assert.match(missingHtml, /noindex/);
+  assert.match(missingHtml, /follow/);
 });
 
 test("renders the research list without project-detail links", async () => {

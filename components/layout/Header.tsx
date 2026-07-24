@@ -20,7 +20,7 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <Link href="/" className="wordmark" aria-label="Yunmoxiao Tian, home">
+        <Link href="/" className="wordmark" aria-label="Yunmoxiao Tian 田云墨筱, home">
           <strong>Yunmoxiao Tian</strong>
           <span lang="zh-CN">田云墨筱</span>
         </Link>
@@ -37,7 +37,12 @@ export function Header() {
           ))}
         </nav>
         <div className="header-actions">
-          <a className="button button--small button--solid" href={siteConfig.cvUrl} download>
+          <a
+            className="button button--small button--solid"
+            href={siteConfig.cvUrl}
+            download
+            aria-label="Download Yunmoxiao Tian’s CV"
+          >
             CV <span aria-hidden="true">↓</span>
           </a>
           <button
@@ -72,7 +77,7 @@ export function Header() {
         ))}
         <a href={siteConfig.cvUrl} download onClick={() => setOpen(false)}>
           <span>CV</span>
-          Download curriculum vitae
+          Download Yunmoxiao Tian’s CV
         </a>
       </nav>
     </header>

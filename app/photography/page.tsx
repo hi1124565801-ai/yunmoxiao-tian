@@ -2,13 +2,11 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
 import { PhotographyWorldMapClient } from "@/components/photography/PhotographyWorldMapClient";
 import { SelectedFrames } from "@/components/photography/SelectedFrames";
+import { createPageMetadata, indexedPages } from "@/config/seo";
 import { photographyLocations } from "@/data/photographyLocations";
 
-export const metadata: Metadata = {
-  title: "Photography",
-  description:
-    "An interactive world map and photography archive by Yunmoxiao Tian.",
-};
+const seo = indexedPages[4];
+export const metadata: Metadata = createPageMetadata(seo);
 
 export default function PhotographyPage() {
   const photoCount = photographyLocations.reduce((total, location) => total + location.photos.length, 0);
@@ -18,8 +16,9 @@ export default function PhotographyPage() {
         <p className="section-kicker">Photography</p>
         <h1>The world through my lens</h1>
         <p>
-          A visual archive of {photoCount} selected photographs across cities,
-          streets, coastlines, interiors, and passing moments.
+          Photography by Yunmoxiao Tian: a visual archive of {photoCount} selected
+          photographs across cities, streets, coastlines, interiors, and passing
+          moments.
         </p>
       </header>
       <section className="photography-page section-pad">

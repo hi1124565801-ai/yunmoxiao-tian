@@ -10,7 +10,10 @@ export function Footer() {
         <a href={siteConfig.linkedin} target="_blank" rel="noreferrer">
           LinkedIn <span className="sr-only">(opens in a new tab)</span>
         </a>
-        <a href={siteConfig.cvUrl} download>CV</a>
+        <a href={siteConfig.github} target="_blank" rel="noreferrer">
+          GitHub <span className="sr-only">(opens in a new tab)</span>
+        </a>
+        <a href={siteConfig.cvUrl} download>Download Yunmoxiao Tian’s CV</a>
       </nav>
     </footer>
   );

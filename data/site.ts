@@ -6,6 +6,7 @@ export const siteConfig = {
   academicEmail: "2200018214@stu.pku.edu.cn",
   personalEmail: "hi1124565801@gmail.com",
   linkedin: "https://www.linkedin.com/in/yunmoxiao-tian-781b88348/",
+  github: "https://github.com/hi1124565801-ai",
   cvUrl: withBasePath("/files/Yunmoxiao-Tian-CV.pdf"),
   literaryAtlasUrl: "https://hi1124565801-ai.github.io/literary-city-atlas/?v=26",
   navigation: [

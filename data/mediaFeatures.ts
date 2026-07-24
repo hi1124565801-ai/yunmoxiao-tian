@@ -54,6 +54,7 @@ export const mediaFeatures: MediaFeature[] = [
       "A collective profile of campus journalists from several Peking University media teams. In the interview, I discuss revising narrative structure, making highly accomplished interviewees emotionally legible rather than distant, and finding meaningful stories in ordinary campus lives. The feature also reflects on campus journalism as a practice of listening, preserving memory, and recording people whose work is important but rarely visible.",
     link: "https://mp.weixin.qq.com/s/QdEjtJV70ht_wfr2AKs74A",
     image: "/images/profile/yunmoxiao-main.jpg",
-    imageAlt: "Portrait of Yunmoxiao Tian standing on a bridge in evening light",
+    imageAlt:
+      "Portrait of Yunmoxiao Tian, a Peking University undergraduate in English Literature and Sociology",
   },
 ];

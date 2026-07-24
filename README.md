@@ -1,11 +1,11 @@
-# Yunmoxiao Tian — Academic Portfolio
+# Yunmoxiao Tian — Personal Academic Website
 
-The source for Yunmoxiao Tian's public academic portfolio, combining research,
-long-form writing, photography, media features, and the Literary City Atlas.
+Official personal website of Yunmoxiao Tian (田云墨筱), a Peking University
+undergraduate studying English Language and Literature and Sociology.
 
-## Public website
+Website:
 
-<https://hi1124565801-ai.github.io/yunmoxiao-tian/>
+[https://hi1124565801-ai.github.io/yunmoxiao-tian/](https://hi1124565801-ai.github.io/yunmoxiao-tian/)
 
 ## Technology
 

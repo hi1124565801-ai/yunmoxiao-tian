@@ -2,15 +2,13 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/PageShell";
 import { FeaturedStory } from "@/components/writing/FeaturedStory";
 import { StoryArchiveItem } from "@/components/writing/StoryArchiveItem";
+import { createPageMetadata, indexedPages } from "@/config/seo";
 import { campusStories } from "@/data/campusStories";
 import { independentEssays } from "@/data/independentEssays";
 import { journalismStories } from "@/data/journalismStories";
 
-export const metadata: Metadata = {
-  title: "Writing",
-  description:
-    "Long-form journalism, campus reporting, and independent essays by Yunmoxiao Tian.",
-};
+const seo = indexedPages[2];
+export const metadata: Metadata = createPageMetadata(seo);
 
 export default function WritingPage() {
   const featured = journalismStories.filter((story) => story.featured);
@@ -22,7 +20,7 @@ export default function WritingPage() {
         <p className="section-kicker">Writing</p>
         <h1>Journalism, campus writing, and independent essays</h1>
         <p>
-          Reporting and essays across culture, consumption, fashion, ageing,
+          Writing by Yunmoxiao Tian across culture, consumption, fashion, ageing,
           education, urban life, and the experience of living between cities.
         </p>
       </header>

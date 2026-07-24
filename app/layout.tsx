@@ -1,45 +1,36 @@
 import type { Metadata, Viewport } from "next";
-import { withBasePath } from "@/lib/sitePath";
+import {
+  createPageMetadata,
+  getVerificationMetadata,
+  homeDescription,
+  homeTitle,
+  publicAssetUrl,
+  seoConfig,
+} from "@/config/seo";
 import "./globals.css";
 
-const publicSiteUrl =
-  process.env.GITHUB_PAGES === "true"
-    ? "https://hi1124565801-ai.github.io"
-    : "https://yunmoxiao-field-notes.fairy-gnat-3713.chatgpt.site";
+const defaultMetadata = createPageMetadata({
+  title: homeTitle,
+  description: homeDescription,
+  path: "/",
+  profile: true,
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL(publicSiteUrl),
+  ...defaultMetadata,
+  metadataBase: new URL(seoConfig.canonicalSiteUrl),
   title: {
-    default: "Yunmoxiao Tian | Research, Writing & Photography",
-    template: "%s | Yunmoxiao Tian",
+    default: homeTitle,
+    template: "%s",
   },
-  description:
-    "Yunmoxiao Tian is a Peking University undergraduate studying English Language and Literature and Sociology, with research interests in cultural sociology, consumer sociology, communication, organizations, urban life, and digital platforms.",
+  alternates: undefined,
+  manifest: publicAssetUrl("/site.webmanifest"),
   icons: {
-    icon: withBasePath("/favicon.png"),
-    shortcut: withBasePath("/favicon.png"),
+    icon: publicAssetUrl("/favicon.png"),
+    shortcut: publicAssetUrl("/favicon.png"),
+    apple: publicAssetUrl("/apple-touch-icon.png"),
   },
-  openGraph: {
-    title: "Yunmoxiao Tian | Research, Writing & Photography",
-    description:
-      "Peking University undergraduate studying English Language and Literature and Sociology, with research across culture, organizations, urban life, communication, and digital platforms.",
-    type: "website",
-    images: [
-      {
-        url: withBasePath("/og.png"),
-        width: 1536,
-        height: 1024,
-        alt: "Yunmoxiao Tian — academic portfolio",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Yunmoxiao Tian | Research, Writing & Photography",
-    description:
-      "Academic research, long-form journalism, photography, and independent literary mapping.",
-    images: [withBasePath("/og.png")],
-  },
+  verification: getVerificationMetadata(),
 };
 
 export const viewport: Viewport = {
