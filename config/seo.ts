@@ -10,7 +10,7 @@ export const seoConfig = {
   alternateName: "Tian Yunmoxiao",
   profileImagePath: "/images/profile/yunmoxiao-main.jpg",
   socialImagePath: "/og.png",
-  googleSiteVerification: null as string | null,
+  googleSiteVerification: "WlK2AVNhcAr85WzErqMvlsZtLCJIubZuF2pGt2q-sx4",
   bingSiteVerification: null as string | null,
   baiduSiteVerification: null as string | null,
 } as const;
