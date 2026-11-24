@@ -1,3 +1,4 @@
+import "../portfolio-editions.css";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
@@ -16,22 +17,21 @@ export default function PhotographyPage() {
       <header className="page-hero page-hero--photography">
         <h1>Photography</h1>
         <p>
-          Six photographs, read in pairs. The map below opens the full archive of {photoCount} photographs by place.
+          A bicycle turns up in another city. Red looks different after dark. Follow a thread across three photographs, or put two prints together yourself.
         </p>
       </header>
-      <section className="selected-frames-section section-pad" aria-labelledby="selected-frames-heading">
-        <div className="section-head">
-          <h2 id="selected-frames-heading">Photographs in pairs</h2>
-          <nav className="research-contents" aria-label="Photography collections">
-            <Link href="/photography#photo-map">Browse the map</Link>
-            <Link href="/writing#world-press-photo">My essay on World Press Photo</Link>
-            <Link href="/research#field-heading">Bar fieldwork photographs</Link>
-          </nav>
-        </div>
+      <section className="selected-frames-section section-pad" aria-label="Curated photography">
         <SelectedFrames />
+        <a className="archive-jump" href="#photo-map">Browse all {photoCount} photographs by place</a>
       </section>
       <section id="photo-map" aria-label="Photography by location" className="photography-page section-pad">
+        <h2>Browse by place</h2>
+        <p>Explore all {photoCount} photographs on the map.</p>
         <PhotographyWorldMapClient />
+        <nav className="research-contents" aria-label="Related photography">
+          <Link href="/writing#world-press-photo">My essay on World Press Photo</Link>
+          <Link href="/research#field-heading">Bar fieldwork photographs</Link>
+        </nav>
       </section>
     </PageShell>
   );
