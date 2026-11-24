@@ -15,11 +15,11 @@ export type ResearchProject = {
 export const researchProjects: ResearchProject[] = [
   {
     id: "organized-variation",
-    title: "Standardizing the Nonstandard: Organized Variation in a Chinese Bar Chain",
+    title: "Organized Variation: Replication and Customer-Created Experiences in a Chinese Bar Chain",
     role: "Independent Research Project",
     institution: "Peking University",
     location: "Beijing / Guangzhou, China",
-    dates: "March 2025–Present",
+    dates: "March 2025–November 2026",
     supervisor: "Assoc. Prof. Wang Di, Department of Sociology, Peking University",
     description: [
       "A qualitative study of how a Chinese multi-city bar chain reproduces participant-produced sociability across outlets while leaving the content and outcomes of interaction open.",
@@ -27,23 +27,23 @@ export const researchProjects: ResearchProject[] = [
       "It develops the concept of “organized variation” to examine replication, participation, uneven attention, exclusion, fatigue, and turnover.",
     ],
     themes: ["Ethnography", "Interviews", "Organizations", "Urban Sociability", "Consumer Work"],
-    status: "Ongoing",
+    status: "Completed",
     selected: true,
   },
   {
     id: "china-africa-fashion-power",
     title: "European Research Council–Funded Project: China–Africa Fashion Power",
-    role: "Research Assistant",
+    role: "Research Assistant and Visiting Student",
     institution: "University of Amsterdam",
     location: "Amsterdam, the Netherlands",
-    dates: "June 2026–Present",
+    dates: "June–August 2026",
     supervisor: "Assoc. Prof. Tommy Tse, University of Amsterdam",
     description: [
-      "Processes and analyzes fieldwork materials from Kenya and reviews research and industry sources on fashion production, circulation, and consumption.",
-      "The work also examines artificial intelligence, fashion e-commerce, sustainability, and the conceptual development of a digital platform.",
+      "Processed and analyzed fieldwork materials from Kenya and reviewed research and industry sources on fashion production, circulation, and consumption.",
+      "The work also examined artificial intelligence, fashion e-commerce, sustainability, and the conceptual development of a digital platform.",
     ],
     themes: ["Fashion", "Global Value Chains", "AI", "E-commerce", "Mixed Methods"],
-    status: "Ongoing",
+    status: "Completed",
     selected: true,
   },
   {
@@ -65,7 +65,7 @@ export const researchProjects: ResearchProject[] = [
   {
     id: "newsagent",
     title: "NewsAgent: A Research-Based System for AI-Supported News Writing",
-    role: "Research Assistant · University-awarded Research Project",
+    role: "Independent Research Project · University-awarded Research Project",
     institution: "Peking University",
     location: "Beijing, China",
     dates: "November 2024–May 2025",

@@ -4,7 +4,8 @@ import { FeaturedStory } from "@/components/writing/FeaturedStory";
 import { StoryArchiveItem } from "@/components/writing/StoryArchiveItem";
 import { createPageMetadata, indexedPages } from "@/config/seo";
 import { campusStories } from "@/data/campusStories";
-import { independentEssays } from "@/data/independentEssays";
+import Link from "next/link";
+import { WeChatEssays } from "@/components/writing/WeChatEssays";
 import { journalismStories } from "@/data/journalismStories";
 
 const seo = indexedPages[2];
@@ -17,46 +18,23 @@ export default function WritingPage() {
   return (
     <PageShell>
       <header className="page-hero page-hero--editorial">
-        <p className="section-kicker">Writing</p>
-        <h1>Journalism, campus writing, and independent essays</h1>
-        <p>
-          Writing by Yunmoxiao Tian across culture, consumption, fashion, ageing,
-          education, urban life, and the experience of living between cities.
-        </p>
+        <h1>Journalism and essays</h1>
+        <p>During my internship at Daily People (每日人物) and People Magazine (人物), I interviewed about 80–90 people for nine features on life in Chinese cities. I also write campus profiles and personal essays.</p>
+        <nav className="research-contents" aria-label="Writing sections">
+          <Link href="/writing#bingkuai-xiawu">冰块下午 · Personal essays</Link>
+          <Link href="/writing#featured-stories-heading">Journalism</Link>
+          <Link href="/writing#campus-writing-heading">Campus writing</Link>
+        </nav>
       </header>
-
-      <section className="journalism-profile section-pad" aria-labelledby="journalism-profile-heading">
-        <div>
-          <p className="section-kicker">Journalism Profile</p>
-          <h2 id="journalism-profile-heading">People Magazine <span lang="zh-CN">(人物)</span></h2>
-        </div>
-        <div>
-          <p>
-            People Magazine is a prominent Chinese publication known for long-form
-            narrative journalism and human-interest reporting. During a seven-month
-            editorial internship, I independently reported and wrote nine feature
-            stories based on interviews with approximately 80–90 people.
-          </p>
-          <p>
-            The stories examined emerging youth cultures, consumption, fashion,
-            ageing, and urban social life, receiving more than one million views in total.
-          </p>
-          <div className="profile-metrics">
-            <span><strong>9</strong> independently written feature stories</span>
-            <span><strong>80–90</strong> interviewees</span>
-            <span><strong>1M+</strong> total views</span>
-            <span><strong>5</strong> topic areas</span>
-          </div>
-        </div>
-      </section>
+      <WeChatEssays />
 
       <section className="featured-stories section-pad" aria-labelledby="featured-stories-heading">
         <div className="section-head">
           <div>
-            <p className="section-kicker">People Magazine</p>
+
             <h2 id="featured-stories-heading">Selected journalism</h2>
           </div>
-          <p>Independently reported and written.</p>
+          <p>Daily People and People Magazine · July 2024–February 2025</p>
         </div>
         <div className="featured-story-grid">
           {featured.map((story) => <FeaturedStory key={story.id} story={story} />)}
@@ -66,6 +44,12 @@ export default function WritingPage() {
             <StoryArchiveItem key={story.id} story={story} index={index + featured.length} />
           ))}
         </div>
+      </section>
+
+      <section className="editorial-experience section-pad" aria-labelledby="editorial-heading">
+        <h2 id="editorial-heading">Editorial and communications experience</h2>
+        <p><strong>Madame Figaro China</strong> · Fashion editorial intern, April–June 2025. I researched designers, fact-checked stories, and interviewed guests at the magazine’s Shanghai event.</p>
+        <p><strong>BlueFocus</strong> · Global marketing intern, January–April 2025. I researched consumer technology markets and tracked how brands communicated overseas.</p>
       </section>
 
       <section className="pku-media section-pad" aria-labelledby="pku-media-heading">
@@ -125,33 +109,6 @@ export default function WritingPage() {
         </div>
       </section>
 
-      <section className="independent-essays section-pad" aria-labelledby="independent-essays-heading">
-        <div className="essay-publication">
-          <p className="section-kicker">Independent Essays</p>
-          <h2 id="independent-essays-heading"><span lang="zh-CN">冰块下午</span></h2>
-          <p>
-            Bingkuai Xiawu (冰块下午, “The Afternoon of Ice”) is my personal
-            WeChat publication. Its name refers to the afternoon of encountering ice
-            in <em>One Hundred Years of Solitude</em>. The essays move between everyday
-            observation, cultural commentary, memory, food, conversation, photography,
-            and the experience of living across cities.
-          </p>
-        </div>
-        <div className="essay-list">
-          {independentEssays.map((essay, index) => (
-            <article key={essay.id}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <h3>{essay.titleEn}</h3>
-              <p lang="zh-CN">{essay.titleZh}</p>
-              <p>{essay.summary}</p>
-              <a href={essay.link} target="_blank" rel="noreferrer">
-                Read essay <span aria-hidden="true">↗</span>
-                <span className="sr-only">(opens in a new tab)</span>
-              </a>
-            </article>
-          ))}
-        </div>
-      </section>
     </PageShell>
   );
 }

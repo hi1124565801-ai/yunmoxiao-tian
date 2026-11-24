@@ -105,7 +105,7 @@ export const photographyLocations: PhotographyLocation[] = [
       [
         "Colourful waterfront buildings reflected in Copenhagen harbour",
         "A pedestrian crossing a rain-darkened Copenhagen street at night",
-        "A bicycle outside a warmly lit Copenhagen building after rain",
+        "A bicycle beneath the amber light of a Copenhagen shopfront",
         "A blue spiral staircase seen from above in Copenhagen",
       ],
       ["Copenhagen harbour.", "Copenhagen, after the rain."],
@@ -290,7 +290,7 @@ export const photographyLocations: PhotographyLocation[] = [
     country: "China",
     coordinates: [121.4479, 37.4638],
     photos: album("yantai", [
-      "People walking along a foggy waterfront path in Yantai",
+      "A small boat on still water beneath a low sun in Yantai",
     ]),
   },
   {

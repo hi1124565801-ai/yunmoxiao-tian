@@ -1,4 +1,5 @@
 export const honors = [
+  { title: "PKU President’s Undergraduate Research Fellowship (PURF)", dates: "2025–2026" },
   { title: "PKU Outstanding Research Award", dates: "2024–2025" },
   { title: "PKU Merit Student", dates: "2023–2024" },
   { title: "PKU Scholarship", dates: "2023–2024 and 2024–2025" },

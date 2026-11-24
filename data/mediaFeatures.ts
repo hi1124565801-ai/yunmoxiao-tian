@@ -13,14 +13,15 @@ export type MediaFeature = {
 export const mediaFeatures: MediaFeature[] = [
   {
     id: "pku-faces-copenhagen",
-    source: "Peking University Official Instagram",
+    source: "Peking University · Instagram @pku1898",
+    date: "April 8, 2026",
     originalTitle: "PKU Faces — Tian Yunmoxiao at the University of Copenhagen",
     englishTitle: "PKU Faces — Tian Yunmoxiao at the University of Copenhagen",
     summary:
-      "A Peking University profile of my semester at the University of Copenhagen. The post reflects on a year of extensive travel—46 flights across three continents and 99,065 kilometres—but focuses on how Copenhagen encouraged a slower and more attentive way of seeing. It highlights my creative-writing work, study of Bob Dylan’s lyrics, conversations with professors and students, and reflections on humility and intellectual curiosity.",
+      "Peking University follows my semester in Copenhagen, from studying Bob Dylan’s lyrics to finding a slower rhythm in the Nordic winter.",
     link: "https://www.instagram.com/p/DW3fevVlHUg/?igsh=aWNpYzdrYmN0amt6",
-    image: "/images/photography/copenhagen/copenhagen-01.jpg",
-    imageAlt: "Colourful waterfront buildings reflected in Copenhagen harbour",
+    image: "/images/media/pku-faces-copenhagen.webp",
+    imageAlt: "Cover of Peking University’s Instagram post showing Tian in a blue scarf beside a pond",
   },
   {
     id: "pku-global-copenhagen",

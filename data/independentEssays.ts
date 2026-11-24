@@ -13,7 +13,7 @@ export const independentEssays: IndependentEssay[] = [
     titleZh: "《老派聊天之必要》",
     link: "https://mp.weixin.qq.com/s/2fYnIxiXgztdKqpLvCvNGA",
     summary:
-      "A lyrical essay against optimized networking, scheduled coffee chats, and screen-mediated attention. Moving through summer memories, city walks, music, small talk, and local speech, it imagines conversation as an accidental, unhurried form of intimacy rather than a transaction.",
+      "A city walk, a snatch of local speech, a conversation that runs past its allotted time. What happens when a conversation has no agenda?",
   },
   {
     id: "eating-together",
@@ -21,7 +21,7 @@ export const independentEssays: IndependentEssay[] = [
     titleZh: "《老派吃饭之必要》",
     link: "https://mp.weixin.qq.com/s/J9cB2p8zYGA8rFSxJOSGuA",
     summary:
-      "A playful personal essay celebrating street stalls, crowded restaurants, waiting in line, shared dishes, childhood tastes, and the conversations that happen around food. It contrasts spontaneous, sensory forms of eating together with polished dining rituals and carefully managed experiences.",
+      "Street stalls, childhood tastes, and the wait for a shared table. Some of the pleasure of a meal starts before the food arrives.",
   },
   {
     id: "world-press-photo",
@@ -29,6 +29,6 @@ export const independentEssays: IndependentEssay[] = [
     titleZh: "《26荷赛摄影展｜在遍地 AI 的时代，看见人的存在》",
     link: "https://mp.weixin.qq.com/s/O3l56VucsQ2Rmbiq_pK3uA",
     summary:
-      "A reflection on photojournalism as embodied witnessing and ethical care in an age of generative images. Through photographs of fire, scam compounds, human–robot companionship, and a wedding during a flood, the essay argues that photography matters not simply because it produces images, but because a person was present to witness another life.",
+      "Looking at a wedding photographed during a flood, I ask what it means for one person to be there to witness another person’s life.",
   },
 ];

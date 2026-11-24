@@ -2,20 +2,16 @@ import { honors } from "@/data/honors";
 
 export function Honors() {
   return (
-    <section className="honors honors--compact section-pad" aria-labelledby="honors-heading">
-      <div>
-        <p className="section-kicker">Honors</p>
-        <h2 id="honors-heading">Selected recognition at Peking University</h2>
-      </div>
-      <ol>
-        {honors.map((honor, index) => (
-          <li key={`${honor.title}-${honor.dates}`}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <strong>{honor.title}</strong>
-            <time>{honor.dates}</time>
+    <details className="profile-details">
+      <summary>Selected honors</summary>
+      <ul className="honor-list">
+        {honors.map((honor) => (
+          <li key={honor.title}>
+            <span>{honor.title}</span>
+            <span>{honor.dates}</span>
           </li>
         ))}
-      </ol>
-    </section>
+      </ul>
+    </details>
   );
 }

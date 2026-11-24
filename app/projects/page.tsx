@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { CompatibilityRedirect } from "@/components/layout/CompatibilityRedirect";
 
 export default function ProjectsCompatibilityPage() {
-  redirect("/literary-mapping");
+  return <CompatibilityRedirect href="/literary-mapping" label="Literary City Atlas" />;
 }

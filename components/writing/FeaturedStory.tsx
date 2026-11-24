@@ -3,13 +3,13 @@ import type { JournalismStory } from "@/data/journalismStories";
 
 export function FeaturedStory({ story }: { story: JournalismStory }) {
   return (
-    <article className="featured-story">
+    <article className="featured-story" id={story.id}>
       <div className="featured-story-image">
         <SmartImage
           src={story.image}
           alt={`Editorial image accompanying ${story.titleEn}`}
           fill
-          sizes="(max-width: 760px) 92vw, 38vw"
+          sizes="(max-width: 650px) 70px, 104px"
         />
       </div>
       <div>

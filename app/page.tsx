@@ -27,10 +27,12 @@ export default function Home() {
           __html: JSON.stringify(homeStructuredData).replace(/</g, "\\u003c"),
         }}
       />
-      <Hero />
-      <PortfolioDirectory />
-      <InternationalExperience />
-      <Honors />
+      <div className="home-content">
+        <Hero />
+        <PortfolioDirectory />
+        <InternationalExperience />
+        <Honors />
+      </div>
     </PageShell>
   );
 }

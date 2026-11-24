@@ -1,24 +1,40 @@
 import Link from "next/link";
-import { siteConfig } from "@/data/site";
+import { SmartImage } from "@/components/media/SmartImage";
+import { literaryMapping } from "@/data/literaryMapping";
+import { photographyLocations } from "@/data/photographyLocations";
+
+const selectedWork = [
+  { section: "Research", title: "Organized Variation at Drunk N’ Jump", href: "/research#organized-variation" },
+  { section: "Journalism", title: "Why young people go to bars for lectures", href: "/writing#academic-bars" },
+  { section: "Personal essays", title: "冰块下午 · The Afternoon of Ice", href: "/writing#bingkuai-xiawu" },
+  { section: "Digital project", title: literaryMapping.title, href: "/literary-mapping" },
+];
 
 export function PortfolioDirectory() {
-  const destinations = siteConfig.navigation.filter((item) => item.href !== "/");
-
+  const photograph = photographyLocations.find(({ id }) => id === "tromso")?.photos[1];
   return (
-    <section className="portfolio-directory" aria-labelledby="directory-heading">
-      <div className="portfolio-directory__intro">
-        <p className="section-kicker">Explore the archive</p>
-        <h2 id="directory-heading">Research, stories, images, and maps</h2>
+    <section className="work-selection" aria-labelledby="work-heading">
+      <div>
+        <h2 id="work-heading">Selected work</h2>
+        <ul>
+          {selectedWork.map((work) => (
+            <li key={work.href}>
+              <Link href={work.href}>
+                <span>{work.section}</span>
+                <strong>{work.title}</strong>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
-      <nav aria-label="Portfolio sections">
-        {destinations.map((item, index) => (
-          <Link key={item.href} href={item.href}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <strong>{item.label}</strong>
-            <i aria-hidden="true">↗</i>
-          </Link>
-        ))}
-      </nav>
+      {photograph && (
+        <Link className="featured-photograph" href="/photography#frame-tromso">
+          <div>
+            <SmartImage src={photograph.src} alt={photograph.alt} fill sizes="(max-width: 620px) 90vw, 440px" />
+          </div>
+          <span>Photography <i aria-hidden="true">/</i> Tromsø, Norway</span>
+        </Link>
+      )}
     </section>
   );
 }

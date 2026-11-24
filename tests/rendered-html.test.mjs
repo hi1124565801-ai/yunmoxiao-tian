@@ -31,9 +31,9 @@ test("server-renders the academic homepage", async () => {
   assert.match(html, /Yunmoxiao Tian/);
   assert.match(html, /田云墨筱/);
   assert.match(html, /Peking University/);
-  assert.match(html, /Second Major in Sociology/);
-  assert.match(html, /Expected Graduation: June 2027/);
-  assert.match(html, /also written as Tian/);
+  assert.match(html, /minor in Sociology/i);
+  assert.match(html, /graduate in June 2027/);
+  assert.match(html, /Tian Yunmoxiao/);
   assert.match(html, /application\/ld\+json/);
   assert.match(html, /ProfilePage/);
   assert.match(html, /https:\/\/hi1124565801-ai\.github\.io\/yunmoxiao-tian\//);
@@ -75,7 +75,7 @@ test("renders the research list without project-detail links", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
 
-  assert.match(html, /Standardizing the Nonstandard/);
+  assert.match(html, /Organized Variation: Replication and Customer-Created Experiences/);
   assert.match(html, /China–Africa Fashion Power/);
   assert.match(html, /Cross-Cultural Adaptation/);
   assert.doesNotMatch(html, /View Project|Read More/);

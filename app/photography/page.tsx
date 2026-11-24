@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { PhotographyWorldMapClient } from "@/components/photography/PhotographyWorldMapClient";
 import { SelectedFrames } from "@/components/photography/SelectedFrames";
@@ -13,26 +14,24 @@ export default function PhotographyPage() {
   return (
     <PageShell>
       <header className="page-hero page-hero--photography">
-        <p className="section-kicker">Photography</p>
-        <h1>The world through my lens</h1>
+        <h1>Photography</h1>
         <p>
-          Photography by Yunmoxiao Tian: a visual archive of {photoCount} selected
-          photographs across cities, streets, coastlines, interiors, and passing
-          moments.
+          Six photographs, read in pairs. The map below opens the full archive of {photoCount} photographs by place.
         </p>
       </header>
-      <section className="photography-page section-pad">
-        <PhotographyWorldMapClient />
-      </section>
       <section className="selected-frames-section section-pad" aria-labelledby="selected-frames-heading">
         <div className="section-head">
-          <div>
-            <p className="section-kicker">Selected Frames</p>
-            <h2 id="selected-frames-heading">A few ways of looking</h2>
-          </div>
-          <p>Images retain their original proportions and open in a keyboard-accessible viewer.</p>
+          <h2 id="selected-frames-heading">Photographs in pairs</h2>
+          <nav className="research-contents" aria-label="Photography collections">
+            <Link href="/photography#photo-map">Browse the map</Link>
+            <Link href="/writing#world-press-photo">My essay on World Press Photo</Link>
+            <Link href="/research#field-heading">Bar fieldwork photographs</Link>
+          </nav>
         </div>
         <SelectedFrames />
+      </section>
+      <section id="photo-map" aria-label="Photography by location" className="photography-page section-pad">
+        <PhotographyWorldMapClient />
       </section>
     </PageShell>
   );

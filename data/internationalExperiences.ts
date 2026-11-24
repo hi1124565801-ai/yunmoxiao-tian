@@ -13,7 +13,7 @@ export const internationalExperiences: InternationalExperience[] = [
   {
     id: "peking-university",
     institution: "Peking University",
-    role: "B.A. in English Language and Literature; Second Major in Sociology",
+    role: "B.A. in English Language and Literature; Minor in Sociology",
     location: "Beijing",
     dates: "2022–2027",
     coordinates: [116.3109, 39.9928],
@@ -24,20 +24,20 @@ export const internationalExperiences: InternationalExperience[] = [
   {
     id: "amsterdam",
     institution: "University of Amsterdam",
-    role: "Research Assistant, ERC-funded China–Africa Fashion Power project",
+    role: "Research Assistant and Visiting Student, ERC-funded China–Africa Fashion Power project",
     location: "Amsterdam",
-    dates: "2026–Present",
+    dates: "June–August 2026",
     coordinates: [4.9041, 52.3676],
     category: "Research",
     description:
-      "Supporting research on fashion production, circulation, consumption, artificial intelligence, e-commerce, and sustainable fashion. The work includes processing field materials from Kenya, reviewing industry and academic sources, and contributing to mixed-method research for a digital platform.",
+      "Supported research on fashion production, circulation, consumption, artificial intelligence, e-commerce, and sustainable fashion. The work included processing field materials from Kenya, reviewing industry and academic sources, and contributing to mixed-method research for a digital platform.",
   },
   {
     id: "montreal",
     institution: "HEC Montréal",
     role: "Mitacs-funded Summer Research",
     location: "Montréal",
-    dates: "Summer 2025",
+    dates: "June–September 2025",
     coordinates: [-73.5673, 45.5017],
     category: "Research",
     description:
@@ -48,7 +48,7 @@ export const internationalExperiences: InternationalExperience[] = [
     institution: "University of Copenhagen",
     role: "Exchange Student, Faculty of Humanities",
     location: "Copenhagen",
-    dates: "Autumn 2025",
+    dates: "September 2025–January 2026",
     coordinates: [12.5683, 55.6761],
     category: "Study",
     description:

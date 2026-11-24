@@ -11,7 +11,7 @@ export function MediaFeatureItem({
   return (
     <article className="media-feature-item">
       <span className="entry-number">{String(index + 1).padStart(2, "0")}</span>
-      <div className="media-feature-image">
+      <div className={feature.id === "pku-faces-copenhagen" ? "media-feature-image instagram-cover" : "media-feature-image"}>
         <SmartImage
           src={feature.image}
           alt={feature.imageAlt}
@@ -22,11 +22,11 @@ export function MediaFeatureItem({
       <div>
         <p className="entry-meta">{feature.source}{feature.date ? ` · ${feature.date}` : ""}</p>
         <h2>{feature.englishTitle}</h2>
-        <p className="chinese-title" lang="zh-CN">{feature.originalTitle}</p>
+        {feature.originalTitle !== feature.englishTitle && <p className="chinese-title" lang="zh-CN">{feature.originalTitle}</p>}
         <p>{feature.summary}</p>
       </div>
       <a href={feature.link} target="_blank" rel="noreferrer">
-        Read feature <span aria-hidden="true">↗</span>
+        {feature.id === "pku-faces-copenhagen" ? "View on Instagram" : "Read feature"} <span aria-hidden="true">↗</span>
         <span className="sr-only">(opens in a new tab)</span>
       </a>
     </article>

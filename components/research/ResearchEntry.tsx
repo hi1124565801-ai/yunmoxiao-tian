@@ -8,7 +8,7 @@ export function ResearchEntry({
   index: number;
 }) {
   return (
-    <article className="research-entry">
+    <article className="research-entry" id={project.id}>
       <span className="research-entry-number">{String(index + 1).padStart(2, "0")}</span>
       <header>
         <p>{project.role} · {project.status}</p>

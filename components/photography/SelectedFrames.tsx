@@ -1,50 +1,65 @@
-import { SmartImage } from "@/components/media/SmartImage";
-import { photographyLocations } from "@/data/photographyLocations";
+"use client";
 
-const frames = [
-  { location: "amsterdam", photo: 1, theme: "Evening streets" },
-  { location: "tromso", photo: 1, theme: "Northern coastlines" },
-  { location: "tokyo", photo: 0, theme: "Night cities" },
-  { location: "sri-lanka", photo: 2, theme: "At the water" },
-  { location: "budapest", photo: 1, theme: "Places of waiting" },
-  { location: "santorini", photo: 0, theme: "Light and geometry" },
+import { useCallback, useRef, useState } from "react";
+import { SmartImage } from "@/components/media/SmartImage";
+import { PhotoLightbox } from "@/components/photography/PhotoLightbox";
+import { photographyLocations, type PhotographyLocation } from "@/data/photographyLocations";
+
+const pairs = [
+  {
+    title: "Across the glass",
+    note: "In Barcelona, two faces meet the red of a window. In Copenhagen, a bicycle waits beneath a lit window. In both frames, the glass holds the eye at the edge of the room.",
+    frames: [["barcelona", 1], ["copenhagen", 2]],
+  },
+  {
+    title: "At the waterline",
+    note: "In Sri Lanka, people stand where the waves break. Near Tromsø, snow-covered rocks mark the same boundary. The water gives each scene a different pace.",
+    frames: [["sri-lanka", 2], ["tromso", 1]],
+  },
+  {
+    title: "Two views of the night",
+    note: "Red columns frame a view into Kyoto. In Tokyo, the eye looks down between illuminated signs. A change of height rearranges the city.",
+    frames: [["kyoto", 0], ["tokyo", 0]],
+  },
 ] as const;
 
 export function SelectedFrames() {
-  const selected = frames.flatMap((frame) => {
-    const location = photographyLocations.find((item) => item.id === frame.location);
-    const photo = location?.photos[frame.photo];
-    return location && photo ? [{ ...frame, location, photo }] : [];
-  });
-
+  const [active, setActive] = useState<{ location: PhotographyLocation; index: number } | null>(null);
+  const opener = useRef<HTMLButtonElement | null>(null);
+  const close = useCallback(() => {
+    setActive(null);
+    opener.current?.focus();
+  }, []);
   return (
-    <div className="selected-frames" aria-label="Selected photography">
-      {selected.map(({ location, photo, theme }, index) => (
-        <figure
-          key={`${location.id}-${photo.src}`}
-          className={`frame frame--${index + 1}`}
-          aria-label={`${theme}, ${
-            location.coordinates ? `${location.city}, ${location.country}` : location.country
-          }`}
-        >
-          <div className="frame-image">
-            <SmartImage
-              src={photo.src}
-              alt={photo.alt}
-              fill
-              sizes="(max-width: 720px) 92vw, 45vw"
-            />
+    <div className="photo-sequences">
+      {pairs.map((pair) => (
+        <article className="photo-pair" key={pair.title}>
+          <header>
+            <h3>{pair.title}</h3>
+            <p>{pair.note}</p>
+          </header>
+          <div className="paired-prints">
+            {pair.frames.map(([id, index]) => {
+              const location = photographyLocations.find((item) => item.id === id);
+              const photo = location?.photos[index];
+              if (!location || !photo) return null;
+              const place = location.coordinates ? location.city + ", " + location.country : location.country;
+              return (
+                <figure id={`frame-${id}`} key={id}>
+                  <button type="button" aria-label={`Open photograph from ${place}`} onClick={(event) => {
+                    opener.current = event.currentTarget;
+                    setActive({location, index});
+                  }}>
+                    <SmartImage src={photo.src} alt={photo.alt} width={800} height={600} sizes="(max-width: 650px) 92vw, 42vw" />
+                  </button>
+                  <figcaption>{place}</figcaption>
+                </figure>
+              );
+            })}
           </div>
-          <figcaption>
-            <span>{theme}</span>
-            <p>
-              {location.coordinates
-                ? `${location.city}, ${location.country}`
-                : location.country}
-            </p>
-          </figcaption>
-        </figure>
+        </article>
       ))}
+      {active && <PhotoLightbox location={active.location} initialIndex={active.index} onClose={close} />}
     </div>
   );
 }

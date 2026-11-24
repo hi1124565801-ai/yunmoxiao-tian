@@ -1,84 +1,36 @@
 import Link from "next/link";
 import { SmartImage } from "@/components/media/SmartImage";
-import { researchInterests, siteConfig } from "@/data/site";
+import { siteConfig } from "@/data/site";
 
 export function Hero() {
   return (
-    <section className="hero" aria-labelledby="home-title">
-      <div className="hero-copy">
-        <p className="section-kicker">Peking University · Undergraduate</p>
-        <h1 id="home-title">
-          Yunmoxiao Tian
-          <span lang="zh-CN">田云墨筱</span>
-        </h1>
-        <div className="hero-academic-line" aria-label="Academic profile">
-          <p>Peking University</p>
-          <p>B.A. in English Language and Literature</p>
-          <p>Second Major in Sociology</p>
-          <p>Expected Graduation: June 2027</p>
-        </div>
-        <p className="hero-identity-summary">
-          Yunmoxiao Tian (<span lang="zh-CN">田云墨筱</span>, also written as Tian
-          Yunmoxiao) is an undergraduate at Peking University, majoring in English
-          Language and Literature with a second major in Sociology and graduating
-          in 2027.
-        </p>
-        <p className="hero-position">
-          My research sits at the intersection of{" "}
-          <strong>cultural sociology, communication, and media and technology</strong>.
-          I study how <strong>social, organizational, and technological systems</strong>{" "}
-          shape the ways people encounter, participate in, and make sense of culture.
-          My current projects examine <strong>participant-produced sociability</strong>{" "}
-          in a multi-city bar organization, <strong>brand consistency</strong> across
-          digital platforms, and how <strong>AI-supported writing systems</strong>{" "}
-          reorganize journalistic knowledge production.
-        </p>
-        <p className="hero-intro">
-          At Peking University, I combine training in English literature and
-          sociology with qualitative fieldwork, interviews, textual and visual
-          analysis, and mixed-method research. Alongside academic research, I write
-          long-form journalism, practice photography, and independently develop
-          digital cultural projects, including the Literary City Atlas.
-        </p>
-        <div className="hero-interests" aria-label="Research interests">
-          {researchInterests.slice(0, 5).map((interest) => (
-            <span key={interest}>{interest}</span>
-          ))}
-        </div>
-        <div className="hero-actions">
-          <a className="button button--solid" href={siteConfig.cvUrl} download>
-            Download Yunmoxiao Tian’s CV
-          </a>
-          <Link className="button button--line" href="/research">View Research</Link>
-          <a className="button button--text" href={`mailto:${siteConfig.academicEmail}`}>
-            Email Me
-          </a>
-          <a className="button button--text" href={siteConfig.linkedin} target="_blank" rel="noreferrer">
-            LinkedIn <span className="sr-only">(opens in a new tab)</span>
-          </a>
-        </div>
+    <section className="profile-intro" aria-labelledby="home-title">
+      <h1 id="home-title">
+        {siteConfig.name}
+        <span lang="zh-CN">{siteConfig.chineseName}</span>
+      </h1>
+      <div className="profile-photo">
+        <SmartImage
+          src="/images/profile/yunmoxiao-main.jpg"
+          alt="Yunmoxiao Tian standing on a bridge"
+          fill
+          priority
+          sizes="(max-width: 620px) 24vw, 252px"
+        />
       </div>
-      <div className="hero-portrait-column">
-        <div className="hero-portrait">
-          <SmartImage
-            src="/images/profile/yunmoxiao-main.jpg"
-            alt="Portrait of Yunmoxiao Tian, a Peking University undergraduate in English Literature and Sociology"
-            fill
-            priority
-            sizes="(max-width: 860px) 92vw, 42vw"
-          />
+      <div className="profile-bio">
+        <p>
+          I study English Language and Literature at Peking University, with a minor in Sociology. I expect to graduate in June 2027.
+        </p>
+        <p>
+          I follow the people who make a place what it is. In Beijing and Guangzhou,
+          I studied how bar customers become bartenders, performers, and regulars.
+          I also report on urban life, photograph cities, and map the places I find in books.
+        </p>
+        <div className="profile-links">
+          <Link href="/research#organized-variation">Explore my fieldwork</Link>
+          <a href={`mailto:${siteConfig.academicEmail}`}>Email me</a>
         </div>
-        <div className="hero-contact">
-          <span>Academic email</span>
-          <a href={`mailto:${siteConfig.academicEmail}`}>{siteConfig.academicEmail}</a>
-          <span>Personal email</span>
-          <a href={`mailto:${siteConfig.personalEmail}`}>{siteConfig.personalEmail}</a>
-        </div>
-      </div>
-      <div className="botanical-line" aria-hidden="true">
-        <i />
-        <i />
-        <i />
       </div>
     </section>
   );
