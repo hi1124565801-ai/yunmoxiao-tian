@@ -1,14 +1,14 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { SmartImage } from "@/components/media/SmartImage";
 import { PhotoLightbox } from "@/components/photography/PhotoLightbox";
 import { photographyLocations, type PhotographyLocation } from "@/data/photographyLocations";
 
 const pairs = [
   {
-    title: "Across the glass",
-    note: "In Barcelona, two faces meet the red of a window. In Copenhagen, a bicycle waits beneath a lit window. In both frames, the glass holds the eye at the edge of the room.",
+    title: "Red and amber",
+    note: "Red fills nearly the whole Barcelona frame. The two faces take a moment to find. In Copenhagen, a small pool of amber light draws the eye straight to the bicycle.",
     frames: [["barcelona", 1], ["copenhagen", 2]],
   },
   {
@@ -25,6 +25,17 @@ const pairs = [
 
 export function SelectedFrames() {
   const [active, setActive] = useState<{ location: PhotographyLocation; index: number } | null>(null);
+  const [spread, setSpread] = useState(0);
+  useEffect(() => {
+    function showLinkedFrame() {
+      const target = window.location.hash.split("#").pop();
+      const index = pairs.findIndex(pair => pair.frames.some(([id]) => target === "frame-" + id));
+      if (index >= 0) setSpread(index);
+    }
+    showLinkedFrame();
+    window.addEventListener("hashchange", showLinkedFrame);
+    return () => window.removeEventListener("hashchange", showLinkedFrame);
+  }, []);
   const opener = useRef<HTMLButtonElement | null>(null);
   const close = useCallback(() => {
     setActive(null);
@@ -32,12 +43,11 @@ export function SelectedFrames() {
   }, []);
   return (
     <div className="photo-sequences">
-      {pairs.map((pair) => (
-        <article className="photo-pair" key={pair.title}>
-          <header>
-            <h3>{pair.title}</h3>
-            <p>{pair.note}</p>
-          </header>
+      <div className="spread-picker" role="group" aria-label="Choose a photographic pairing">
+        {pairs.map((pair, index) => <button type="button" key={pair.title} aria-pressed={index === spread} onClick={() => setSpread(index)}>{pair.title}</button>)}
+      </div>
+      {pairs.map((pair, pairIndex) => (
+        <article hidden={spread !== pairIndex} className="photo-pair" key={pair.title}>
           <div className="paired-prints">
             {pair.frames.map(([id, index]) => {
               const location = photographyLocations.find((item) => item.id === id);
@@ -57,6 +67,10 @@ export function SelectedFrames() {
               );
             })}
           </div>
+          <header>
+            <h3>{pair.title}</h3>
+            <p>{pair.note}</p>
+          </header>
         </article>
       ))}
       {active && <PhotoLightbox location={active.location} initialIndex={active.index} onClose={close} />}

@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/home/Hero";
-import { Honors } from "@/components/home/Honors";
-import { InternationalExperience } from "@/components/home/InternationalExperience";
-import { PortfolioDirectory } from "@/components/home/PortfolioDirectory";
 import { PageShell } from "@/components/layout/PageShell";
 import {
   createPageMetadata,
@@ -29,9 +26,6 @@ export default function Home() {
       />
       <div className="home-content">
         <Hero />
-        <PortfolioDirectory />
-        <InternationalExperience />
-        <Honors />
       </div>
     </PageShell>
   );

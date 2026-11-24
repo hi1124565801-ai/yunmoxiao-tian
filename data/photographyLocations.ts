@@ -52,7 +52,7 @@ export const photographyLocations: PhotographyLocation[] = [
     coordinates: [2.1734, 41.3851],
     photos: album("barcelona", [
       "A sand volleyball court beneath a dark evening sky in Barcelona",
-      "Two diners reflected in a red-lit window in Barcelona",
+      "Two faces close together in a field of red, crossed by dark lines, in Barcelona",
     ]),
   },
   {
