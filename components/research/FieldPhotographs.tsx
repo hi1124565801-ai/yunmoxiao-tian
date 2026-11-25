@@ -19,7 +19,7 @@ export function FieldPhotographs() {
       </div>
       <figure className="field-frame" aria-live="polite">
         <div className="field-image">
-          <SmartImage key={shot.id} src={`/images/fieldwork/${shot.id}.webp`} alt={shot.alt} width={1250} height={940} />
+          <SmartImage key={shot.id} src={`/images/fieldwork/${shot.id}.webp`} alt={shot.alt} width={1250} height={940} sizes="(max-width: 650px) 90vw, min(50vw, 570px)" />
         </div>
         <figcaption>
           <span className="field-place">{shot.location}</span>

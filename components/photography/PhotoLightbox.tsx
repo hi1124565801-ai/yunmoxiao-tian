@@ -98,6 +98,7 @@ export function PhotoLightbox({
           alt={photo.alt}
           fill
           sizes="96vw"
+          original
           priority
           className="lightbox-image"
         />

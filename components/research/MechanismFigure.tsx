@@ -14,7 +14,7 @@ export function MechanismFigure() {
         </button>
       </div>
       <div className="diagram-scroll" id="figure-scroll" data-enlarged={enlarged} tabIndex={enlarged ? 0 : undefined} role="region" aria-label="Mechanism diagram">
-        <SmartImage src="/images/fieldwork/mechanism.webp" alt="Across outlets, repeated roles meet different skills and staff support. Over time, participation changes relationships and access, leading staff to recruit and coordinate the next round." width={1752} height={897} />
+        <SmartImage src="/images/fieldwork/mechanism.webp" alt="Across outlets, repeated roles meet different skills and staff support. Over time, participation changes relationships and access, leading staff to recruit and coordinate the next round." width={1752} height={897} original={enlarged} sizes="(max-width: 960px) 90vw, 864px" />
       </div>
       <figcaption>Figure 1 from the study. Read across the top to follow a shift, event, or notebook entry from invitation to contribution. The lower loop follows what happens next: skills and friendships accumulate, access changes, and staff organize another round.</figcaption>
     </figure>

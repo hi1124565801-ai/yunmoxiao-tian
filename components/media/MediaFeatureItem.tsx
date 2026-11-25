@@ -16,7 +16,7 @@ export function MediaFeatureItem({
           src={feature.image}
           alt={feature.imageAlt}
           fill
-          sizes="(max-width: 760px) 32vw, 15vw"
+          sizes="180px"
         />
       </div>
       <div>

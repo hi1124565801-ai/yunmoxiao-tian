@@ -41,8 +41,21 @@ const rolls = [
 const prints = rolls.flatMap((roll) => roll.frames);
 type Print = (typeof prints)[number];
 
-function PrintImage({ print, thumb = false }: { print: Print; thumb?: boolean }) {
-  return <SmartImage key={print.photo.src} src={print.photo.src} alt={thumb ? "" : print.photo.alt} width={thumb ? 144 : 900} height={thumb ? 96 : 650} sizes={thumb ? "120px" : "(max-width: 700px) 92vw, 48vw"} />;
+function PrintImage({ print, thumb, paired }: { print: Print; thumb?: boolean; paired?: boolean }) {
+  let sizes = "(max-width: 750px) 90vw, min(72vw, 800px)";
+  if (thumb) sizes = "64px";
+  else if (paired) sizes = "min(44vw, 510px)";
+  return (
+    <SmartImage
+      key={print.photo.src}
+      src={print.photo.src}
+      alt={thumb ? "" : print.photo.alt}
+      width={thumb ? 144 : 900}
+      height={thumb ? 96 : 650}
+      sizes={sizes}
+      priority={!thumb && !paired}
+    />
+  );
 }
 
 export function SelectedFrames() {
@@ -76,7 +89,7 @@ export function SelectedFrames() {
 
   const close = useCallback(() => { setActive(null); opener.current?.focus(); }, []);
   function fullPrint(print: Print) {
-    return <button className="mounted-print" type="button" aria-label={`Enlarge photograph from ${print.place}`} onClick={(e) => { opener.current = e.currentTarget; setActive(print); }}><PrintImage print={print} /></button>;
+    return <button className="mounted-print" type="button" aria-label={`Enlarge photograph from ${print.place}`} onClick={(e) => { opener.current = e.currentTarget; setActive(print); }}><PrintImage print={print} paired={mode === "pair"} /></button>;
   }
 
   return (

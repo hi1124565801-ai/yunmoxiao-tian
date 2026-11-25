@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
 const PhotographyWorldMap = dynamic(
@@ -16,5 +17,23 @@ const PhotographyWorldMap = dynamic(
 );
 
 export function PhotographyWorldMapClient() {
-  return <PhotographyWorldMap />;
+  const container = useRef<HTMLDivElement>(null);
+  const [nearViewport, setNearViewport] = useState(false);
+
+  useEffect(() => {
+    if (!container.current || !("IntersectionObserver" in window)) {
+      setNearViewport(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setNearViewport(true);
+        observer.disconnect();
+      }
+    }, { rootMargin: "300px" });
+    observer.observe(container.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return <div ref={container}>{nearViewport ? <PhotographyWorldMap /> : <div className="map-loading" aria-hidden="true" />}</div>;
 }
