@@ -1,0 +1,27 @@
+# GitHub's branch publisher can run Jekyll even with .nojekyll present.
+# Preserve the static export, including Next.js scripts and route payloads.
+include:
+  - _next
+  - _not-found
+  - "__next*.txt"
+  - "_*Manifest.js"
+exclude:
+  - app/
+  - build/
+  - components/
+  - config/
+  - data/
+  - db/
+  - drizzle/
+  - examples/
+  - lib/
+  - public/
+  - tests/
+  - worker/
+  - README.md
+  - SEO_SUBMISSION_CHECKLIST.md
+  - "*.config.*"
+  - package.json
+  - pnpm-lock.yaml
+  - pnpm-workspace.yaml
+  - tsconfig.json
