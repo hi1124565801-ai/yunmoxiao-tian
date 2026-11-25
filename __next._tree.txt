@@ -1,0 +1,2 @@
+:HL["/yunmoxiao-tian/_next/static/chunks/0hqiq~j6zgf7y.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"Ye7G1sIOdY_Ym1v_u5Jug"}

@@ -1,0 +1,23 @@
+{
+  "name": "Yunmoxiao Tian 田云墨筱",
+  "short_name": "Yunmoxiao Tian",
+  "description": "The official personal academic website of Yunmoxiao Tian.",
+  "start_url": "/yunmoxiao-tian/",
+  "scope": "/yunmoxiao-tian/",
+  "display": "standalone",
+  "background_color": "#F3F0E7",
+  "theme_color": "#183B32",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/yunmoxiao-tian/favicon.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/yunmoxiao-tian/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://hi1124565801-ai.github.io/yunmoxiao-tian/sitemap.xml
