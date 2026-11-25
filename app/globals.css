@@ -404,13 +404,32 @@ main {
 }
 
 .profile-bio {
-  max-width: 58ch;
+  display: grid;
+  gap: 1.25rem;
   align-self: start;
   color: var(--ink);
 }
 
 .profile-bio p {
-  margin: 0 0 0.85rem;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.bio-opening {
+  max-width: 49ch;
+  color: var(--pine);
+  font: 400 clamp(1.125rem, 1.4vw, 1.25rem)/1.5 var(--serif);
+}
+
+.profile-bio .bio-interests {
+  max-width: 49ch;
+  margin-inline-start: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.bio-closing {
+  max-width: 48ch;
+  color: var(--pine);
+  font: italic 1.0625rem/1.55 var(--serif);
 }
 
 .profile-links {
@@ -2836,8 +2855,6 @@ main {
   .atlas-chart { min-height: 190px; }
 }
 
-.profile-bio a { color: var(--pine); text-decoration: underline; text-decoration-color: var(--moss); text-underline-offset: .2em; }
-.profile-bio .bio-affiliation { margin-top: 1.4rem; color: var(--muted); font-size: .9rem; }
 .spread-picker { display: flex; gap: .5rem; flex-wrap: wrap; }
 .spread-picker button { padding: .45rem .9rem; border: 1px solid var(--line); color: var(--pine); cursor: pointer; background: transparent; }
 .spread-picker button[aria-pressed=true] { background: var(--pine); color: var(--warm-white); }

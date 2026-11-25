@@ -31,8 +31,9 @@ test("server-renders the academic homepage", async () => {
   assert.match(html, /Yunmoxiao Tian/);
   assert.match(html, /田云墨筱/);
   assert.match(html, /Peking University/);
-  assert.match(html, /minor in Sociology/i);
-  assert.match(html, /graduate in June 2027/);
+  assert.match(html, /easily distracted by a good story/);
+  assert.match(html, /little worlds that exist alongside my own/);
+  assert.match(html, /turn my curiosities into research projects/);
   assert.match(html, /Tian Yunmoxiao/);
   assert.match(html, /application\/ld\+json/);
   assert.match(html, /ProfilePage/);
