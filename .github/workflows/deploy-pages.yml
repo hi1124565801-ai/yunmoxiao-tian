@@ -20,10 +20,17 @@ jobs:
   build:
     outputs:
       attempt: ${{ steps.bundle.outputs.attempt }}
+      branch_root: ${{ steps.bundle.outputs.branch_root }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out source
         uses: actions/checkout@v4
+
+      - name: Exclude the previous static export from build inputs
+        run: |
+          if [ -f .github/pages-export.json ]; then
+            python -c 'import json; from pathlib import Path; [Path(p).unlink() for p in json.loads(Path(".github/pages-export.json").read_text())]'
+          fi
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -44,7 +51,12 @@ jobs:
 
       - name: Record build attempt
         id: bundle
-        run: echo "attempt=$GITHUB_RUN_ATTEMPT" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "attempt=$GITHUB_RUN_ATTEMPT" >> "$GITHUB_OUTPUT"
+          branch_root=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq '.build_type == "legacy" and .source.branch == "main" and .source.path == "/"')
+          echo "branch_root=$branch_root" >> "$GITHUB_OUTPUT"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -82,3 +94,30 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           artifact_name: portfolio-${{ github.run_id }}-${{ needs.build.outputs.attempt }}
+
+  sync-branch:
+    needs: [build, deploy]
+    if: github.ref == 'refs/heads/main' && needs.build.outputs.branch_root == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: portfolio-${{ github.run_id }}-${{ needs.build.outputs.attempt }}
+          path: ${{ runner.temp }}/pages-artifact
+      - name: Keep the branch source in sync with the deployed site
+        run: |
+          set -euo pipefail
+          export_dir="$RUNNER_TEMP/pages-export"
+          mkdir -p "$export_dir"
+          tar -xf "$RUNNER_TEMP/pages-artifact/artifact.tar" -C "$export_dir"
+          touch "$export_dir/.nojekyll"
+          python .github/scripts/sync-pages.py "$export_dir"
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Sync the published portfolio to the Pages source"
+          # A normal fast-forward push cannot replace a newer main branch.
+          git push origin HEAD:refs/heads/main
