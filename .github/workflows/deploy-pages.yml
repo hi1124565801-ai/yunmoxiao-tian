@@ -7,16 +7,19 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
 
 concurrency:
-  group: pages
+  group: portfolio-pages
   cancel-in-progress: true
 
 jobs:
   build:
+    outputs:
+      attempt: ${{ steps.bundle.outputs.attempt }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out source
@@ -39,10 +42,15 @@ jobs:
       - name: Build static site
         run: pnpm run build:github
 
+      - name: Record build attempt
+        id: bundle
+        run: echo "attempt=$GITHUB_RUN_ATTEMPT" >> "$GITHUB_OUTPUT"
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
+          name: portfolio-${{ github.run_id }}-${{ github.run_attempt }}
 
   deploy:
     environment:
@@ -51,6 +59,26 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      # Branch-based Pages can publish the repository README after a faster Next.js build.
+      - name: Wait for branch publishing when enabled
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          repo="repos/$GITHUB_REPOSITORY"
+          if [[ "$(gh api "$repo/pages" --jq .build_type)" == "legacy" ]]; then
+            for attempt in {1..90}; do
+              status=$(gh api -X GET "$repo/actions/runs" -f head_sha="$GITHUB_SHA" -f event=dynamic --jq '[.workflow_runs[] | select(.path == "dynamic/pages/pages-build-deployment")][0].status // ""')
+              if [[ "$status" == "completed" ]]; then exit 0; fi
+              sleep 10
+            done
+            echo "::error::Branch publishing did not finish before the timeout."
+            exit 1
+          fi
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: portfolio-${{ github.run_id }}-${{ needs.build.outputs.attempt }}
