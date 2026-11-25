@@ -20,7 +20,7 @@ export function WeChatEssays() {
         <section aria-labelledby="photo-essay">
           <h3 id="photo-essay">On looking</h3>
           <EssayLink essay={photography} />
-          <Link className="essay-related" href="/photography">Explore my photographs →</Link>
+          <Link prefetch={false} className="essay-related" href="/photography">Explore my photographs →</Link>
         </section>
       </div>
     </section>

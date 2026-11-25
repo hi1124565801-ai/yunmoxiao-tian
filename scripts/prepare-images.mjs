@@ -5,6 +5,7 @@ import sharp from "sharp";
 const sourceRoot = "public/images";
 const outputRoot = "public/image-previews";
 const presets = {
+  "projects/atlas": [384, 576, 640],
   profile: [96, 160, 256, 512, 768],
   photography: [64, 128, 256, 512, 800, 1100],
   writing: [128, 256, 384],
@@ -21,7 +22,10 @@ for (const [collection, widths] of Object.entries(presets)) {
     const file = path.join(entry.parentPath, entry.name);
     const relative = path.relative(sourceRoot, file).split(path.sep).join("/");
     const { autoOrient } = await sharp(file).metadata();
-    const candidates = [...new Set(widths.map((w) => Math.min(w, autoOrient.width)))];
+    const displayWidths = collection === "projects/atlas" && entry.name.endsWith("-cover.webp")
+      ? [48, 96, 150]
+      : widths;
+    const candidates = [...new Set(displayWidths.map(w => Math.min(w, autoOrient.width)))];
     const target = path.join(outputRoot, relative);
     await mkdir(path.dirname(target), { recursive: true });
     for (const width of candidates) {

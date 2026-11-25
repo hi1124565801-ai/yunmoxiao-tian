@@ -9,7 +9,7 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <Link href="/" className="wordmark" aria-label="Yunmoxiao Tian 田云墨筱, home">
+        <Link prefetch={false} href="/" className="wordmark" aria-label="Yunmoxiao Tian 田云墨筱, home">
           <strong>Yunmoxiao Tian</strong>
           <span lang="zh-CN">田云墨筱</span>
         </Link>
@@ -17,7 +17,7 @@ export function Header() {
           {siteConfig.navigation.map((item) => {
             const active = pathname === item.href || pathname.startsWith(item.href + "/");
             return (
-              <Link key={item.href} href={item.href} aria-current={active ? "page" : undefined}>
+              <Link prefetch={false} key={item.href} href={item.href} aria-current={active ? "page" : undefined}>
                 {item.label}
               </Link>
             );

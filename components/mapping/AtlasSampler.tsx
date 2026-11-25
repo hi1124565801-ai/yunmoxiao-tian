@@ -17,7 +17,7 @@ export function AtlasSampler() {
       <div className="book-shelf" role="group" aria-label="Choose a book">
         {atlasReadings.map((item, i) => (
           <button type="button" key={item.id} aria-pressed={i === bookIndex} onClick={() => { setBookIndex(i); setSelected(walking ? item.walk[0] : 0); }}>
-            <SmartImage src={`/images/projects/atlas/${item.id}-cover.webp`} alt="" width={48} height={64} />
+            <SmartImage src={`/images/projects/atlas/${item.id}-cover.webp`} alt="" sizes="(max-width: 750px) 37px, 44px" width={48} height={64} />
             <span><small>{item.city}</small><strong>{item.work}</strong><span>{item.author}</span></span>
           </button>
         ))}
@@ -26,7 +26,7 @@ export function AtlasSampler() {
         <div className="map-column">
           <h2>{book.question}</h2>
           <div className="street-plate" role="group" aria-label={book.city + " map, north up"}>
-            <SmartImage key={book.id} src={`/images/projects/atlas/${book.id}-map.webp`} alt="" width={640} height={400} />
+            <SmartImage key={book.id} src={`/images/projects/atlas/${book.id}-map.webp`} alt="" sizes="(max-width: 750px) 92vw, min(53vw, 576px)" priority width={640} height={400} />
             {book.stops.map((place, i) => (
               <button type="button" key={place.name} className="edition-pin" style={{left: place.x + "%", top: place.y + "%"}} aria-pressed={i === selected} aria-label={place.name} onClick={() => setSelected(i)}>{order.indexOf(i) + 1}</button>
             ))}

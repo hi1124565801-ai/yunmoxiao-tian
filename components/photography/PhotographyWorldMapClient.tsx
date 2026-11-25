@@ -30,7 +30,7 @@ export function PhotographyWorldMapClient() {
         setNearViewport(true);
         observer.disconnect();
       }
-    }, { rootMargin: "300px" });
+    });
     observer.observe(container.current);
     return () => observer.disconnect();
   }, []);

@@ -29,8 +29,8 @@ export default function PhotographyPage() {
         <p>Explore all {photoCount} photographs on the map.</p>
         <PhotographyWorldMapClient />
         <nav className="research-contents" aria-label="Related photography">
-          <Link href="/writing#world-press-photo">My essay on World Press Photo</Link>
-          <Link href="/research#field-heading">Bar fieldwork photographs</Link>
+          <Link prefetch={false} href="/writing#world-press-photo">My essay on World Press Photo</Link>
+          <Link prefetch={false} href="/research#field-heading">Bar fieldwork photographs</Link>
         </nav>
       </section>
     </PageShell>

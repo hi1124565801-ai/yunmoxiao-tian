@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { ResearchEntry } from "@/components/research/ResearchEntry";
 import { FieldPhotographs } from "@/components/research/FieldPhotographs";
@@ -18,9 +17,9 @@ export default function ResearchPage() {
         <h1>Research</h1>
         <p>I study how people make culture together, in bars, newsrooms, and other places where people organize creative work.</p>
         <nav className="research-contents" aria-label="Research sections">
-          <Link href="/research#organized-variation">Featured study</Link>
-          <Link href="/research#field-heading">Field photographs</Link>
-          <Link href="/research#other-research">Other projects</Link>
+          <a href="#organized-variation">Featured study</a>
+          <a href="#field-heading">Field photographs</a>
+          <a href="#other-research">Other projects</a>
         </nav>
       </header>
       <article className="featured-study section-pad" id={featured.id} aria-labelledby="study-title">

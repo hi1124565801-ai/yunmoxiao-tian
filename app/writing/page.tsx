@@ -4,7 +4,6 @@ import { FeaturedStory } from "@/components/writing/FeaturedStory";
 import { StoryArchiveItem } from "@/components/writing/StoryArchiveItem";
 import { createPageMetadata, indexedPages } from "@/config/seo";
 import { campusStories } from "@/data/campusStories";
-import Link from "next/link";
 import { WeChatEssays } from "@/components/writing/WeChatEssays";
 import { journalismStories } from "@/data/journalismStories";
 
@@ -21,9 +20,9 @@ export default function WritingPage() {
         <h1>Journalism and essays</h1>
         <p>During my internship at Daily People (每日人物) and People Magazine (人物), I interviewed about 80–90 people for nine features on life in Chinese cities. I also write campus profiles and personal essays.</p>
         <nav className="research-contents" aria-label="Writing sections">
-          <Link href="/writing#bingkuai-xiawu">冰块下午 · Personal essays</Link>
-          <Link href="/writing#featured-stories-heading">Journalism</Link>
-          <Link href="/writing#campus-writing-heading">Campus writing</Link>
+          <a href="#bingkuai-xiawu">冰块下午 · Personal essays</a>
+          <a href="#featured-stories-heading">Journalism</a>
+          <a href="#campus-writing-heading">Campus writing</a>
         </nav>
       </header>
       <WeChatEssays />
