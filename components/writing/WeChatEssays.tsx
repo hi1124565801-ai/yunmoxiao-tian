@@ -14,11 +14,11 @@ export function WeChatEssays() {
       </header>
       <div className="wechat-columns">
         <section aria-labelledby="everyday-essays">
-          <h3 id="everyday-essays">The old-fashioned pair</h3>
+          <h3 id="everyday-essays">Conversation and food</h3>
           {[conversation, eating].map((essay) => <EssayLink key={essay.id} essay={essay} />)}
         </section>
         <section aria-labelledby="photo-essay">
-          <h3 id="photo-essay">On looking</h3>
+          <h3 id="photo-essay">Photography</h3>
           <EssayLink essay={photography} />
           <Link prefetch={false} className="essay-related" href="/photography">Explore my photographs →</Link>
         </section>

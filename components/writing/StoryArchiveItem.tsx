@@ -8,7 +8,7 @@ export function StoryArchiveItem({
   index: number;
 }) {
   return (
-    <article className="story-archive-item">
+    <article className="story-archive-item" id={story.id}>
       <span>{String(index + 1).padStart(2, "0")}</span>
       <div>
         <p className="entry-meta">{story.publication} · {story.year}</p>
