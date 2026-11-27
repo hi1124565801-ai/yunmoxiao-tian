@@ -1,2 +1,2 @@
-:HL["/yunmoxiao-tian/_next/static/chunks/0oh8srm.sy7tw.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"research","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"china-africa-fashion-power","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"bPa4kMU7Me8eaByKsN9X2"}
+:HL["/yunmoxiao-tian/_next/static/chunks/00oy9j.-1owb~.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"research","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"china-africa-fashion-power","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"MOHaG0n4wltB68SDn4ZSM"}
