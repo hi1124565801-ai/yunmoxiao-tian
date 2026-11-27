@@ -1,31 +1,22 @@
 import Link from "next/link";
 import { SmartImage } from "@/components/media/SmartImage";
-import { literaryMapping } from "@/data/literaryMapping";
+import { atlasSceneUrl } from "@/data/literaryMapping";
 
 export function LiteraryMappingPreview() {
   return (
-    <section className="mapping-preview section-pad" aria-labelledby="mapping-preview-heading">
+    <section className="home-atlas" aria-labelledby="mapping-preview-heading">
+      <figure>
+        <SmartImage src="/images/projects/atlas/cn-beijing-south.webp"
+          alt="A brick gateway frames a narrow lane in the atlas illustration of southern Beijing."
+          width={680} height={680} sizes="(max-width: 620px) 90vw, 335px" />
+        <figcaption>Southern Beijing · AI illustration from the atlas</figcaption>
+      </figure>
       <div>
-        <p className="section-kicker">Independent Digital Project</p>
-        <h2 id="mapping-preview-heading">Literary City Atlas</h2>
-        <p>
-          An early-stage public prototype translating books, writers, fictional
-          scenes, quotations, and real-world locations into walkable urban experiences.
-        </p>
-        <ul>
-          {literaryMapping.role.map((item) => <li key={item}>{item}</li>)}
-        </ul>
-        <Link href="/literary-mapping" className="button button--line">View project</Link>
-      </div>
-      <div className="mapping-preview-window">
-        <div className="browser-bar"><span /><span /><span /><p>literary-city-atlas</p></div>
-        <div className="mapping-preview-image">
-          <SmartImage
-            src={literaryMapping.snapshot}
-            alt="Screenshot of the Literary City Atlas interactive map interface"
-            fill
-            sizes="(max-width: 760px) 92vw, 52vw"
-          />
+        <h2 id="mapping-preview-heading">Literary City Atlas <span lang="zh-CN">小说城市漫游图</span></h2>
+        <p>Lin Haiyin opens <em>城南旧事</em> by remembering the people and streets of her childhood. I built a map where you can follow that memory through Beijing, one scene at a time.</p>
+        <div className="home-atlas-links">
+          <a className="button button--solid" href={atlasSceneUrl("scene-cn-beijing-south")}>Enter the Beijing scene <span aria-hidden="true">↗</span></a>
+          <Link href="/literary-mapping">Browse the books <span aria-hidden="true">→</span></Link>
         </div>
       </div>
     </section>

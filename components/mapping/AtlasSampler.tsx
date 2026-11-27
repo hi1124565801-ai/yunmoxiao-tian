@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { SmartImage } from "@/components/media/SmartImage";
+import { atlasSceneUrl } from "@/data/literaryMapping";
 import { atlasReadings } from "@/data/atlasReadings";
 
 export function AtlasSampler() {
@@ -45,9 +46,17 @@ export function AtlasSampler() {
         <article className="scene-leaf" aria-live="polite" aria-atomic="true">
           <div className="leaf-place">{book.city} <span>{stop.local}</span></div>
           <h3>{stop.name}</h3>
+          {stop.illustration && (
+            <figure className="atlas-scene-print">
+              <SmartImage src={stop.illustration} alt={`The atlas illustration for ${stop.name} in Lin Haiyin’s Beijing.`}
+                width={680} height={680} sizes="(max-width: 750px) 90vw, 390px" />
+              <figcaption>Scene illustration · AI-generated</figcaption>
+            </figure>
+          )}
           <p className="scene-line" lang={stop.sceneLang}>{stop.scene}</p>
           <p>{stop.reading}</p>
           <div className="ground-note"><h4>On today’s map <span>{stop.precision}</span></h4><p>{stop.ground}</p></div>
+          <a className="atlas-scene-link" href={atlasSceneUrl(stop.sceneId)}>Open this scene in the atlas <span aria-hidden="true">↗</span></a>
         </article>
       </div>
     </section>

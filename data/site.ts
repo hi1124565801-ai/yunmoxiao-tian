@@ -1,3 +1,4 @@
+import { literaryMapping } from "@/data/literaryMapping";
 import { withBasePath } from "@/lib/sitePath";
 
 export const siteConfig = {
@@ -8,14 +9,14 @@ export const siteConfig = {
   linkedin: "https://www.linkedin.com/in/yunmoxiao-tian-781b88348/",
   github: "https://github.com/hi1124565801-ai",
   cvUrl: withBasePath("/files/Yunmoxiao-Tian-CV.pdf"),
-  literaryAtlasUrl: "https://hi1124565801-ai.github.io/literary-city-atlas/?v=26",
+  literaryAtlasUrl: literaryMapping.url,
   navigation: [
     { label: "Home", href: "/" },
     { label: "Research", href: "/research" },
     { label: "Writing", href: "/writing" },
     { label: "Media Coverage", href: "/media" },
     { label: "Photography", href: "/photography" },
-    { label: "Literary Mapping", href: "/literary-mapping" },
+    { label: "Literary Atlas", href: "/literary-mapping" },
   ],
 } as const;
 

@@ -2861,3 +2861,24 @@ main {
 .photo-sequences { gap: 1rem; }
 .photo-pair[hidden] { display: none; }
 .photo-pair header { margin: 1.1rem 0 0; }
+
+.home-atlas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.85fr);
+  gap: clamp(1.25rem, 4vw, 3rem);
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding-block: clamp(1.5rem, 3.5vw, 3rem);
+}
+.home-atlas figure, .home-atlas h2 { margin: 0; }
+.home-atlas figure img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.home-atlas figcaption { margin-top: .35rem; font-size: .75rem; color: var(--muted); }
+.home-atlas h2 { font-size: var(--heading-section); color: var(--pine); }
+.home-atlas h2 span { display: block; margin: .35rem 0 .7rem; font-size: 1rem; }
+.home-atlas p { max-width: 60ch; margin-bottom: 1rem; }
+.home-atlas-links { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem 1.25rem; }
+.home-atlas-links > a:last-child, .atlas-scene-link { color: var(--pine); text-decoration: underline; text-underline-offset: .22em; }
+@media (max-width: 620px) {
+  .home-atlas { grid-template-columns: 1fr; gap: .85rem; }
+  .home-atlas figure img { aspect-ratio: 2.35; }
+}

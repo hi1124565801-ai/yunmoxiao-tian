@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LiteraryMappingPreview } from "@/components/home/LiteraryMappingPreview";
 import { Hero } from "@/components/home/Hero";
 import { PageShell } from "@/components/layout/PageShell";
 import {
@@ -26,6 +27,7 @@ export default function Home() {
       />
       <div className="home-content">
         <Hero />
+        <LiteraryMappingPreview />
       </div>
     </PageShell>
   );

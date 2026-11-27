@@ -52,9 +52,9 @@ export const indexedPages = [
   },
   {
     path: "/literary-mapping",
-    title: "Literary Mapping | Yunmoxiao Tian 田云墨筱",
+    title: "Literary City Atlas | Yunmoxiao Tian 田云墨筱",
     description:
-      "The Literary City Atlas, an independent digital cultural project by Yunmoxiao Tian for encountering cities through books, writers, and fictional lives.",
+      "Read scenes from Beijing, London, and Cholon, then follow their places on Yunmoxiao Tian’s interactive Literary City Atlas.",
   },
 ] as const;
 

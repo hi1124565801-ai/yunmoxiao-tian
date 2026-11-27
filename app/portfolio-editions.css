@@ -68,3 +68,10 @@
   .reading-table { gap: .9rem; }
   .edition-pin { width: 1.8rem; height: 1.8rem; }
 }
+
+.atlas-scene-print { margin: .65rem 0 1rem; }
+.atlas-scene-print img { width: 100%; aspect-ratio: 1.85; object-fit: cover; }
+.atlas-scene-print figcaption { margin-top: .25rem; font-size: .75rem; color: var(--muted); }
+.atlas-scene-link { display: inline-block; width: fit-content; margin-top: .85rem; font-size: .9rem; }
+.page-hero:has(.atlas-scene-link) p { max-width: 66ch; margin: 0; }
+.page-hero:has(.atlas-scene-link) h1 span { display: inline-block; font-size: 1rem; }
