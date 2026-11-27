@@ -4,6 +4,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { createPageMetadata } from "@/config/seo";
 import { campusStories } from "@/data/campusStories";
 import { independentEssays } from "@/data/independentEssays";
+import { siteConfig } from "@/data/site";
 import { journalismStories } from "@/data/journalismStories";
 import { editionIds, getReadingEdition } from "@/data/readingEditions";
 import "./reader.css";
@@ -38,7 +39,9 @@ export default async function ReadingPage({ params }: Props) {
       <article className="reading-page">
         <Link className="reader-back" href={`/writing/#${section}`}>← {sectionLabel}</Link>
         <header>
-          <p className="entry-meta" lang="zh-CN">{edition.publisher}{essay ? " · 田云墨筱" : ""}</p>
+          <p className="entry-meta" lang="zh-CN">
+            {edition.publisher}{essay && <> · <Link href="/" rel="author">{siteConfig.chineseName}</Link></>}
+          </p>
           <h1 lang="zh-CN">{edition.title}</h1>
           <p className="reader-translation">{story.titleEn}</p>
           {story.summary && <p className="reader-summary">{story.summary}</p>}

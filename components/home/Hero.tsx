@@ -10,10 +10,13 @@ export function Hero() {
 
   return (
     <section className={secondPortrait ? "profile-intro profile-intro--pair" : "profile-intro"} aria-labelledby="home-title">
-      <h1 id="home-title">
-        {siteConfig.name}
-        <span lang="zh-CN">{siteConfig.chineseName}</span>
-      </h1>
+      <div className="profile-identity">
+        <h1 id="home-title">
+          {siteConfig.name}
+          <span lang="zh-CN">{siteConfig.chineseName}</span>
+        </h1>
+        <p lang="zh-CN">北京大学英语语言文学专业，辅修社会学</p>
+      </div>
       <div className={secondPortrait ? "portrait-pair" : "profile-photo"}>
         <div className="portrait-frame">
           <SmartImage src={original} alt="Yunmoxiao Tian standing on a bridge" fill priority

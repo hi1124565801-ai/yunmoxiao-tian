@@ -15,10 +15,10 @@ export const seoConfig = {
   baiduSiteVerification: null as string | null,
 } as const;
 
-export const homeTitle = "Yunmoxiao Tian 田云墨筱 | Peking University";
+export const homeTitle = "田云墨筱 Yunmoxiao Tian | 个人主页 · Peking University";
 
 export const homeDescription =
-  "Yunmoxiao Tian (田云墨筱) is a Peking University undergraduate studying English Language and Literature and Sociology, with research interests in cultural sociology, communication, organizations, media, and technology.";
+  "田云墨筱的个人主页。就读于北京大学英语语言文学专业，辅修社会学。这里收录了她的新闻报道、个人公众号「冰块下午」的随笔、田野研究、摄影作品和小说城市漫游图。Yunmoxiao Tian studies English Language and Literature at Peking University, with a minor in Sociology.";
 
 export const indexedPages = [
   {
@@ -193,6 +193,7 @@ export const homeStructuredData = {
         affiliation: {
           "@type": "CollegeOrUniversity",
           name: "Peking University",
+          alternateName: "北京大学",
           sameAs: "https://www.pku.edu.cn/",
         },
         sameAs: [
