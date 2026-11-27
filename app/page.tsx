@@ -1,3 +1,4 @@
+import { PortfolioDirectory } from "@/components/home/PortfolioDirectory";
 import type { Metadata } from "next";
 import { LiteraryMappingPreview } from "@/components/home/LiteraryMappingPreview";
 import { Hero } from "@/components/home/Hero";
@@ -27,7 +28,11 @@ export default function Home() {
       />
       <div className="home-content">
         <Hero />
-        <LiteraryMappingPreview />
+        <section className="home-work" aria-labelledby="selected-work-title">
+          <h2 id="selected-work-title">Selected work</h2>
+          <LiteraryMappingPreview />
+          <PortfolioDirectory />
+        </section>
       </div>
     </PageShell>
   );

@@ -61,3 +61,5 @@
   .writing-sections strong { font-size: 1rem; }
   .writing-sections small { font-size: .75rem; }
 }
+
+.featured-story h3 a, .story-archive-item h3 a { font: inherit; color: inherit; padding: 0; margin: 0; }

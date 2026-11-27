@@ -1,3 +1,4 @@
+import { ArticleLink } from "./ArticleLink";
 import type { JournalismStory } from "@/data/journalismStories";
 
 export function StoryArchiveItem({
@@ -12,16 +13,15 @@ export function StoryArchiveItem({
       <span>{String(index + 1).padStart(2, "0")}</span>
       <div>
         <p className="entry-meta">{story.publication} · {story.year}</p>
-        <h3>{story.titleEn}</h3>
+        <h3><ArticleLink story={story}>{story.titleEn}</ArticleLink></h3>
         <p className="chinese-title" lang="zh-CN">{story.titleZh}</p>
         <p>{story.summary}</p>
       </div>
       <div>
         <strong>{story.metrics}</strong>
-        <a href={story.link} target="_blank" rel="noreferrer">
-          Read <span aria-hidden="true">↗</span>
-          <span className="sr-only">(opens in a new tab)</span>
-        </a>
+        <ArticleLink story={story}>
+          Read <span aria-hidden="true">→</span>
+        </ArticleLink>
       </div>
     </article>
   );

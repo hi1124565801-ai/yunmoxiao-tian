@@ -1,3 +1,4 @@
+import { ArticleLink } from "@/components/writing/ArticleLink";
 import "./writing.css";
 import { WritingIndex } from "@/components/writing/WritingIndex";
 import type { Metadata } from "next";
@@ -17,7 +18,7 @@ export default function WritingPage() {
     <PageShell>
       <header className="page-hero page-hero--editorial writing-intro">
         <h1>Writing</h1>
-        <p>I report on life in Chinese cities, write personal essays on WeChat, and interview people at Peking University. Each story links to the original in Chinese.</p>
+        <p>I report on life in Chinese cities, write personal essays on WeChat, and interview people at Peking University. Choose a piece to read in Chinese. English introductions accompany the texts.</p>
       </header>
       <WritingIndex panels={{
         "magazine-reporting": <MagazineReporting />,
@@ -68,16 +69,15 @@ function CampusStories() {
       </header>
       <div className="campus-story-list">
         {campusStories.map((story, index) => (
-          <a key={story.id} id={story.id} href={story.link} target="_blank" rel="noreferrer">
+          <ArticleLink key={story.id} id={story.id} story={story}>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <div>
               <h3>{story.titleEn}</h3>
               <p lang="zh-CN">{story.titleZh}</p>
               {story.summary && <small>{story.summary}</small>}
             </div>
-            <i aria-hidden="true">↗</i>
-            <span className="sr-only">(opens in a new tab)</span>
-          </a>
+            <i aria-hidden="true">→</i>
+          </ArticleLink>
         ))}
       </div>
       <details className="writing-disclosure writing-background" id="pku-media-heading">

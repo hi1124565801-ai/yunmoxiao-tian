@@ -14,7 +14,7 @@ export type JournalismStory = {
 export const journalismStories: JournalismStory[] = [
   {
     id: "lv-budget-offerings",
-    publication: "People Magazine (人物)",
+    publication: "Daily People (每日人物)",
     year: "2024",
     titleEn: "A ¥240 Louis Vuitton Purchase: Who Is Buying Luxury’s “Budget Offerings”?",
     titleZh: "《240元买LV，谁在为奢侈品的“穷鬼生意”买单？》",
@@ -27,7 +27,7 @@ export const journalismStories: JournalismStory[] = [
   },
   {
     id: "academic-bars",
-    publication: "People Magazine (人物)",
+    publication: "Daily People (每日人物)",
     year: "2024",
     titleEn: "No Singing, No Dancing: Why Young People Are Flocking to Bars for Lectures",
     titleZh: "《不唱歌、不蹦迪，年轻人沉迷在酒吧听课》",
@@ -40,7 +40,7 @@ export const journalismStories: JournalismStory[] = [
   },
   {
     id: "older-concert-fans",
-    publication: "People Magazine (人物)",
+    publication: "Daily People (每日人物)",
     year: "2024",
     titleEn: "A ¥17,000 Ticket: The Older Fans Following Concert Tours",
     titleZh: "《17000元一张票，追演唱会的中老年人》",
@@ -53,7 +53,7 @@ export const journalismStories: JournalismStory[] = [
   },
   {
     id: "last-superstar",
-    publication: "People Magazine (人物)",
+    publication: "Daily People (每日人物)",
     year: "2024",
     titleEn: "How Much Did 2024’s Last Superstar Make?",
     titleZh: "《2024最后一个顶流，赚了多少钱？》",
@@ -66,7 +66,7 @@ export const journalismStories: JournalismStory[] = [
   },
   {
     id: "trial-class",
-    publication: "People Magazine (人物)",
+    publication: "Daily People (每日人物)",
     year: "2024",
     titleEn: "The ¥2.8 “Just-for-Fun” Class: Young Consumers Take the Trial and Move On",
     titleZh: "《2.8元的「乐子课」，年轻人薅完就跑》",
@@ -79,7 +79,7 @@ export const journalismStories: JournalismStory[] = [
   },
   {
     id: "skp",
-    publication: "People Magazine (人物)",
+    publication: "Daily People (每日人物)",
     year: "2024",
     titleEn: "Even Beijing’s Wealthiest Shoppers Are Cutting Back at SKP",
     titleZh: "《全北京最有钱的人，在SKP也不乱花钱了》",
@@ -92,8 +92,8 @@ export const journalismStories: JournalismStory[] = [
   },
   {
     id: "korean-tourists",
-    publication: "People Magazine (人物)",
-    year: "2024",
+    publication: "Daily People (每日人物)",
+    year: "2025",
     titleEn: "The First Wave of Korean Tourists in Shanghai Is Already Earning RMB",
     titleZh: "《第一波来上海的韩国人，已经开始赚人民币了》",
     summary:

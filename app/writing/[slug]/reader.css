@@ -1,0 +1,9 @@
+.reading-page { max-width: 43rem; margin: 0 auto; padding: clamp(1.6rem, 5vw, 4rem) max(1rem, 3vw); box-sizing: content-box; }
+.reader-back, .reading-page footer a { font-size: .9rem; color: var(--pine); text-decoration: underline; text-underline-offset: .22em; }
+.reading-page header { margin: 1.4rem 0 2rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--line); }
+.reading-page h1 { margin: .35rem 0; font-size: var(--heading-page); line-height: 1.5; color: var(--pine); }
+.reader-translation { color: var(--pine); font-family: var(--serif); font-size: 1.1rem; line-height: 1.45; }
+.reader-summary { color: var(--muted); margin: 1rem 0 0; }
+.reader-body { line-height: 1.95; overflow-wrap: anywhere; }
+.reader-body p { margin: 0 0 1.05em; }
+.reading-page footer { display: flex; gap: .7rem 1.25rem; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 1.25rem; }

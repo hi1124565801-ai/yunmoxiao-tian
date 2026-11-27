@@ -18,7 +18,8 @@ for (const [collection, widths] of Object.entries(presets)) {
   const dir = path.join(sourceRoot, collection);
   const entries = await readdir(dir, { recursive: true, withFileTypes: true });
   for (const entry of entries) {
-    if (!entry.isFile() || !/\.(jpe?g|webp)$/i.test(entry.name)) continue;
+    const supportedImage = /\.(jpe?g|webp)$/i.test(entry.name) || (collection === "profile" && /\.png$/i.test(entry.name));
+    if (!entry.isFile() || !supportedImage) continue;
     const file = path.join(entry.parentPath, entry.name);
     const relative = path.relative(sourceRoot, file).split(path.sep).join("/");
     const { autoOrient } = await sharp(file).metadata();

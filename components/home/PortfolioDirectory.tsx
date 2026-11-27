@@ -1,40 +1,24 @@
 import Link from "next/link";
-import { SmartImage } from "@/components/media/SmartImage";
-import { literaryMapping } from "@/data/literaryMapping";
-import { photographyLocations } from "@/data/photographyLocations";
 
-const selectedWork = [
-  { section: "Research", title: "Organized Variation at Drunk N’ Jump", href: "/research#organized-variation" },
-  { section: "Journalism", title: "Why young people go to bars for lectures", href: "/writing#academic-bars" },
-  { section: "Personal essays", title: "冰块下午 · The Afternoon of Ice", href: "/writing#bingkuai-xiawu" },
-  { section: "Digital project", title: literaryMapping.title, href: "/literary-mapping" },
+const highlights = [
+  { category: "Field research", title: "Who makes a bar feel like its own place?", detail: "Five sites in Beijing and Guangzhou", href: "/research/#organized-variation" },
+  { category: "Magazine reporting", title: "The lecture hall after dark", detail: "Reporting on China’s academic bars", href: "/writing/academic-bars/" },
+  { category: "Personal essays", title: "The Necessity of Old-Fashioned Conversation", detail: "From my WeChat publication 冰块下午", href: "/writing/conversation/" },
+  { category: "Photography", title: "Tromsø, through my lens", detail: "A frame from my city photographs", href: "/photography/#frame-tromso" },
 ];
 
 export function PortfolioDirectory() {
-  const photograph = photographyLocations.find(({ id }) => id === "tromso")?.photos[1];
   return (
-    <section className="work-selection" aria-labelledby="work-heading">
-      <div>
-        <h2 id="work-heading">Selected work</h2>
-        <ul>
-          {selectedWork.map((work) => (
-            <li key={work.href}>
-              <Link href={work.href}>
-                <span>{work.section}</span>
-                <strong>{work.title}</strong>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-      {photograph && (
-        <Link className="featured-photograph" href="/photography#frame-tromso">
-          <div>
-            <SmartImage src={photograph.src} alt={photograph.alt} fill sizes="(max-width: 620px) 90vw, 440px" />
-          </div>
-          <span>Photography <i aria-hidden="true">/</i> Tromsø, Norway</span>
-        </Link>
-      )}
-    </section>
+    <ul className="home-highlights" aria-label="More selected work">
+      {highlights.map(item => (
+        <li key={item.href}>
+          <Link href={item.href}>
+            <span className="highlight-category">{item.category}</span>
+            <span><strong>{item.title}</strong><small>{item.detail}</small></span>
+            <span aria-hidden="true">→</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }

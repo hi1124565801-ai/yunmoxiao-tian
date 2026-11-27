@@ -12,7 +12,7 @@ export function LiteraryMappingPreview() {
         <figcaption>Southern Beijing · AI illustration from the atlas</figcaption>
       </figure>
       <div>
-        <h2 id="mapping-preview-heading">Literary City Atlas <span lang="zh-CN">小说城市漫游图</span></h2>
+        <h3 id="mapping-preview-heading">Literary City Atlas <span lang="zh-CN">小说城市漫游图</span></h3>
         <p>Lin Haiyin opens <em>城南旧事</em> by remembering the people and streets of her childhood. I built a map where you can follow that memory through Beijing, one scene at a time.</p>
         <div className="home-atlas-links">
           <a className="button button--solid" href={atlasSceneUrl("scene-cn-beijing-south")}>Enter the Beijing scene <span aria-hidden="true">↗</span></a>

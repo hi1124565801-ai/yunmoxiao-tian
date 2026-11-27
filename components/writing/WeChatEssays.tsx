@@ -1,3 +1,4 @@
+import { ArticleLink } from "./ArticleLink";
 import Link from "next/link";
 import { independentEssays } from "@/data/independentEssays";
 
@@ -30,11 +31,10 @@ export function WeChatEssays() {
 function EssayLink({ essay }: { essay: (typeof independentEssays)[number] }) {
   return (
     <article className="wechat-story" id={essay.id}>
-      <a href={essay.link} target="_blank" rel="noreferrer">
+      <ArticleLink story={essay}>
         <span lang="zh-CN">{essay.titleZh.slice(1, -1)}</span>
-        <span aria-hidden="true">↗</span>
-        <span className="sr-only"> (read on WeChat, opens in a new tab)</span>
-      </a>
+        <span aria-hidden="true">→</span>
+      </ArticleLink>
       <p className="essay-translation">{essay.titleEn}</p>
       <p>{essay.summary}</p>
     </article>

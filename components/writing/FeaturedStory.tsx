@@ -1,3 +1,4 @@
+import { ArticleLink } from "./ArticleLink";
 import { SmartImage } from "@/components/media/SmartImage";
 import type { JournalismStory } from "@/data/journalismStories";
 
@@ -14,14 +15,13 @@ export function FeaturedStory({ story }: { story: JournalismStory }) {
       </div>
       <div>
         <p className="entry-meta">{story.publication} · {story.year}</p>
-        <h3>{story.titleEn}</h3>
+        <h3><ArticleLink story={story}>{story.titleEn}</ArticleLink></h3>
         <p className="chinese-title" lang="zh-CN">{story.titleZh}</p>
         <p>{story.summary}</p>
         <strong>{story.metrics}</strong>
-        <a href={story.link} target="_blank" rel="noreferrer">
-          Read article <span aria-hidden="true">↗</span>
-          <span className="sr-only">(opens in a new tab)</span>
-        </a>
+        <ArticleLink story={story}>
+          Read article <span aria-hidden="true">→</span>
+        </ArticleLink>
       </div>
     </article>
   );
