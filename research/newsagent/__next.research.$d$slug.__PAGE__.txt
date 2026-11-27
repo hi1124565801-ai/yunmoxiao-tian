@@ -1,5 +1,5 @@
 1:"$Sreact.fragment"
 2:I[25326,["/yunmoxiao-tian/_next/static/chunks/11q-3mtsn6em~.js","/yunmoxiao-tian/_next/static/chunks/00dwf3xlex0q5.js"],"OutletBoundary"]
 3:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"children":[["$","meta",null,{"httpEquiv":"refresh","content":"0; url=/yunmoxiao-tian/research/#newsagent"}],["$","p",null,{"children":["$","a",null,{"href":"/yunmoxiao-tian/research/#newsagent","children":["Continue to ","the research project"]}]}]]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Q9z4SHquuPvMC5xHQ4kf2"}
+0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"children":[["$","meta",null,{"httpEquiv":"refresh","content":"0; url=/yunmoxiao-tian/research/#newsagent"}],["$","p",null,{"children":["$","a",null,{"href":"/yunmoxiao-tian/research/#newsagent","children":["Continue to ","the research project"]}]}]]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"JQYt_U_lSuN6S9ZQlAIk_"}
 4:null
