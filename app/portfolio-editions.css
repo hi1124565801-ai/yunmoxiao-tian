@@ -75,3 +75,16 @@
 .atlas-scene-link { display: inline-block; width: fit-content; margin-top: .85rem; font-size: .9rem; }
 .page-hero:has(.atlas-scene-link) p { max-width: 66ch; margin: 0; }
 .page-hero:has(.atlas-scene-link) h1 span { display: inline-block; font-size: 1rem; }
+
+.atlas-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .65rem 1.5rem;
+  margin-bottom: 1rem;
+}
+.atlas-title-row h1 { margin: 0; }
+@media (max-width: 640px) {
+  .atlas-title-row { flex-direction: column; align-items: flex-start; }
+}
